@@ -1,66 +1,267 @@
-# MacDroid
+# Mac.apk
 
-**Run Android apps natively on Apple Silicon Macs. No emulator, no virtualization, no VM.**
+**Run Android apps natively on Apple Silicon Macs. No emulator, no virtual machine, no Linux underneath.**
 
-[![Latest release](https://img.shields.io/github/v/release/kksimp/MacDroid-Releases?label=latest&color=6c5ce7)](../../releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/kksimp/Mac.apk-Releases?label=latest&color=6c5ce7)](../../releases/latest)
 [![License: Personal Use](https://img.shields.io/badge/license-Personal%20Use-blue)](LICENSE)
+[![Signed and notarized](https://img.shields.io/badge/signed-notarized%20by%20Apple-000000)](#installation)
 
 ---
 
+> **Alpha.** Mac.apk is early software under active development. Some apps run
+> beautifully, some run partially, and some do not run yet. It is stable enough
+> to use and interesting enough to explore, and it improves with every build.
+
 ## What it is
 
-MacDroid runs Android APKs directly on Apple Silicon Macs at full native speed. Apps launch as ordinary macOS processes, render with the Mac's GPU, and use the CPU at its native speed.
+Mac.apk runs Android apps directly on Apple Silicon. Apps launch as ordinary macOS
+processes, draw through the Mac's GPU, and execute on the CPU at native speed. They
+appear in your Dock, get their own windows, and behave like Mac apps because that
+is what they become.
 
-Not an emulator. Not a virtual machine. No Linux running underneath, no Docker, no Rosetta, no Wine.
+There is no emulator here, and no virtual machine. Nothing boots Android in the
+background, there is no Linux kernel running underneath, and nothing is being
+interpreted instruction-by-instruction. Mac.apk implements the Android application
+environment on top of macOS directly, so an Android app's code runs on your
+processor rather than on a simulated one.
 
-## Download
-
-Grab the latest build from the [Releases page](../../releases/latest).
+The practical consequence is speed and integration: no VM to start, no disk image
+to manage, no separate desktop to switch into.
 
 ## System requirements
 
-- macOS 14 Sonoma or later
-- Apple Silicon (M1, M2, M3, or M4)
+| | |
+|---|---|
+| **macOS 26.4 (Tahoe) or newer** | Required, not recommended |
+| **Apple Silicon** | M1, M2, M3, M4 or newer |
+| **Disk** | ~240 MB for Mac.apk and its runtime. Apps need considerably more than their APK — see below |
+
+**A note on disk space.** Mac.apk prepares each Android app the first time you
+install it, and keeps that prepared form so subsequent launches are fast. The
+result is that an installed app takes noticeably more room than its APK did — a
+large 3D game can occupy several hundred megabytes, occasionally more. If you are
+installing a lot of big games, budget accordingly. Uninstalling an app from the
+Mac.apk control panel reclaims all of it.
+
+**macOS 26.4 is a hard floor and Mac.apk will not work around it.** Running Android
+apps that contain native code requires a platform capability that Apple introduced
+in macOS 26.4. On earlier versions that capability simply does not exist, and native
+Android code would misbehave in ways that are silent and very difficult to diagnose
+— the app would not crash cleanly, it would slowly go wrong. Rather than ship that,
+Mac.apk checks for the capability at runtime and refuses to run native Android code
+without it.
+
+Intel Macs are not supported and will not be. Mac.apk runs Android's ARM code
+directly on your ARM processor, which is not something an Intel chip can do.
+
+---
 
 ## Installation
 
-1. Download the latest `MacDroid.dmg` from the Releases page.
-2. Open the disk image and drag MacDroid to your Applications folder.
-3. On first launch, approve MacDroid in System Settings under Privacy & Security if prompted.
-4. Load an APK and run it.
+Four steps, once. After that you can install Android apps by double-clicking them.
+
+### 1. Install Mac.apk
+
+Download the disk image from the [Releases page](../../releases/latest), open it,
+and drag **Mac.apk** into your **Applications** folder. The disk image gives you an
+Applications shortcut to drop it on.
+
+Mac.apk is signed with an Apple Developer ID and notarized by Apple, so it opens
+normally — no right-click-to-open, no "unidentified developer" warning, and no
+trip to System Settings.
+
+### 2. Open Mac.apk
+
+Launch it from Applications. You will get the Mac.apk control panel: a window with a
+drop zone, your installed Android apps, and a **Runtime:** indicator in the top left.
+
+### 3. Install the runtime
+
+In the top left, next to **Runtime:**, click **Install**.
+
+This unpacks the Android runtime that your apps will actually execute. It is a
+one-time, per-user step, it does not need your password, and it takes a few seconds.
+The indicator will change to **Runtime: Installed**.
+
+> If you skip this step, Mac.apk will quietly install the runtime for you the first
+> time you try to install an Android app. Doing it deliberately here just means you
+> see it happen rather than wondering what the pause was.
+
+### 4. Make Mac.apk the default for APK files
+
+In the control panel, click **Make Default**.
+
+macOS will ask you to confirm — this is a system prompt, and macOS reserves that
+choice for you rather than letting an app take it silently. Approve it, and from
+then on `.apk` files — and the `.apkm`, `.xapk`, `.apks` and `.apkx` split-bundle
+formats — belong to Mac.apk.
+
+**You are done.** From here, installing an Android app is a double-click.
+
+---
+
+## Installing Android apps
+
+### Double-click an APK
+
+Once step 4 is done, double-clicking any `.apk` in Finder hands it to Mac.apk, which
+walks you through installing it. Split bundles — `.apkm`, `.xapk`, `.apks` and
+`.apkx` — work the same way and are merged for you automatically.
+
+### Drag and drop
+
+Drag an APK onto the Mac.apk window. Same result, useful when Mac.apk is already open.
+
+### Install from an app store, inside Mac.apk
+
+This is the part people tend not to expect: **Android app stores run on Mac.apk, and
+they can install apps.** You do not have to find APK files yourself.
+
+#### F-Droid
+
+[F-Droid](https://f-droid.org) is the open-source Android app catalog. Install the
+F-Droid APK once, open it in Mac.apk, and browse and install from its whole catalog
+the way you would on a phone. Downloads, installs and updates all work.
+
+#### Aurora Store
+
+[Aurora Store](https://auroraoss.com) is an open-source client for the Google Play
+catalog. It works on Mac.apk, including installing apps, with **one required setting**:
+
+> ### ⚠ Aurora Store needs a device profile
+>
+> Mac.apk reports itself honestly — it tells apps it is a Mac.apk device, because
+> pretending to be a specific certified Android handset is not something this project
+> does. Google's servers, however, will only serve app downloads to a device they
+> recognize, so Aurora needs to be told which device to ask as.
+>
+> Aurora has this built in. Set it up once:
+>
+> 1. Open **Aurora Store** in Mac.apk
+> 2. Go to **Settings → Spoof Manager → Device**
+> 3. Select **Pixel Tablet**
+> 4. Restart Aurora Store when it asks
+>
+> **Use the Pixel Tablet profile.** That is the one Mac.apk is tested against, so
+> the app builds Google serves you are the ones most likely to run well here. Other
+> profiles may work — Aurora ships more than twenty — but Pixel Tablet is the one we
+> verify against, and it is what we will ask about first if you report a problem
+> with a store-installed app.
+>
+> This is a normal Aurora Store feature that Aurora ships for exactly this purpose,
+> and it affects only which catalog Google shows you.
+
+**A note on what stores can and cannot do:** you can browse, download, install,
+update and uninstall. You cannot make purchases — see
+[For developers and publishers](#for-developers-and-publishers) below for why that
+is deliberate.
+
+### Managing what you have installed
+
+Installing an Android app gives it a real place on your Mac. It gets its own entry
+in your **Applications** folder, under its own name and with its own icon — so
+"Crossy Road" is a Mac app called Crossy Road, launchable from the Dock, Spotlight
+or Launchpad, and pinnable like anything else. You do not have to open Mac.apk
+first, and you do not go through a launcher every time.
+
+The Mac.apk control panel remains the place to see everything you have installed
+and to remove things. Uninstalling deletes the app and its data, and asks you to
+confirm before it does — naming exactly what is about to be removed.
+
+---
 
 ## Compatibility
 
-MacDroid is in early access. Some Android apps run fully, others run partially, and the compatible set expands with each release. Try your favorite APK and see what happens. The runtime keeps improving with every build.
+Mac.apk is in alpha, and honesty serves you better than a marketing number here.
+
+- **Many apps run well.** Utilities, readers, tools, open-source apps and a good
+  number of games run properly, including apps with substantial native code.
+- **Some apps run partially.** They start and are usable, but something is wrong —
+  a visual glitch, a feature that does not respond, audio that does not play.
+- **Some apps do not run yet.** Usually something specific is missing, and usually
+  it gets fixed.
+- **Anything that requires Google Play Services** in a meaningful way — sign-in with
+  Google, Play Billing, push notifications, Play Integrity — will not work. Mac.apk
+  is not a Google-certified Android device and does not claim to be.
+
+The compatible set grows with every release. If an app you care about does not work,
+tell us — that is genuinely how the list gets shorter.
+
+---
 
 ## For developers and publishers
 
-MacDroid runs your Android app on macOS, but two things that work on Android do not work here: advertising SDKs and in-app purchases. This is by design, not an oversight, and we want to explain why.
+Mac.apk runs your Android app on macOS, but two things that work on Android do not
+work here: advertising SDKs and in-app purchases. This is by design, not an oversight,
+and we want to explain why.
 
-Ad networks (Google AdMob, Unity Ads, AppLovin, IronSource, Vungle, and others) require apps to be distributed through approved channels and to run on attested Android devices. Their terms of service prohibit ad serving in modified runtimes, and their fraud-detection systems are aggressive about flagging traffic that doesn't match a real Android device fingerprint. Attempting to serve real ads through MacDroid would risk getting your AdMob account terminated for facilitating fraud, which would harm you, not help you. So we stub ad SDKs as no-ops. Apps continue running normally; ads simply don't display.
+Ad networks (Google AdMob, Unity Ads, AppLovin, IronSource, Vungle, and others)
+require apps to be distributed through approved channels and to run on attested
+Android devices. Their terms of service prohibit ad serving in modified runtimes, and
+their fraud-detection systems are aggressive about flagging traffic that doesn't match
+a real Android device fingerprint. Attempting to serve real ads through Mac.apk would
+risk getting your AdMob account terminated for facilitating fraud, which would harm
+you, not help you. So we stub ad SDKs as no-ops. Apps continue running normally; ads
+simply don't display.
 
-In-app purchases are blocked for the same structural reasons. Google Play Billing requires a connection to Google Play Services and an attested device, neither of which MacDroid provides. We stub the billing SDK so apps don't crash on init, but purchase flows will fail gracefully rather than complete. Users cannot buy anything through MacDroid, and you receive no revenue from MacDroid users through the standard Android monetization paths.
+In-app purchases are blocked for the same structural reasons. Google Play Billing
+requires a connection to Google Play Services and an attested device, neither of which
+Mac.apk provides. We stub the billing SDK so apps don't crash on init, but purchase
+flows will fail gracefully rather than complete. Users cannot buy anything through
+Mac.apk, and you receive no revenue from Mac.apk users through the standard Android
+monetization paths.
 
-We recognize this means MacDroid users currently play your game for free. We don't want this to be the long-term answer. If your app is running on MacDroid and you'd like to be compensated for it, we're genuinely interested in working out a partnership. Possible structures include:
+We recognize this means Mac.apk users currently play your game for free. We don't want
+this to be the long-term answer. If your app is running on Mac.apk and you'd like to be
+compensated for it, we're genuinely interested in working out a partnership. Possible
+structures include:
 
-- A licensed Mac distribution where users purchase a one-time unlock through a payment flow you control, with you keeping the majority of revenue
-- A subscription or storefront model where MacDroid acts as a sanctioned distribution channel for your catalog on Mac
+- A licensed Mac distribution where users purchase a one-time unlock through a payment
+  flow you control, with you keeping the majority of revenue
+- A subscription or storefront model where Mac.apk acts as a sanctioned distribution
+  channel for your catalog on Mac
 - A revenue share on a developer-specific in-app currency or premium content unlock
 - Whatever structure makes sense for your business. We're flexible.
 
-We'd rather build a small number of real publisher relationships than run an unlicensed pile of your games. If you publish an Android app that runs on MacDroid (whether it's in our compatibility list or you've tested it yourself), please reach out to Kaleb@voltare.us. Even if a partnership doesn't materialize, we want to know which developers are paying attention.
+We'd rather build a small number of real publisher relationships than run an unlicensed
+pile of your games. If you publish an Android app that runs on Mac.apk, please reach out
+to Kaleb@voltare.us. Even if a partnership doesn't materialize, we want to know which
+developers are paying attention.
 
-If you'd prefer your app not run on MacDroid, also reach out and we'll add it to a runtime block list. We'd rather honor that request than fight about it.
+If you'd prefer your app not run on Mac.apk, also reach out and we'll add it to a
+runtime block list. We'd rather honor that request than fight about it.
+
+---
+
+## Reporting problems
+
+Bug reports are useful to us, and the alpha is the point at which they matter most.
+
+A good report includes:
+
+- **The Mac.apk version.** Select Mac.apk in your Applications folder and press
+  ⌘I (File → Get Info); the version is at the top of the info window.
+- **Your macOS version** (`sw_vers -productVersion` in Terminal, or  → About This Mac).
+- **Which app**, including where you got it and its version.
+- **What happened**, and what you expected instead. A screenshot is worth a lot.
+
+Send it to Kaleb@voltare.us or [open an issue](../../issues/new).
 
 ## License
 
-MacDroid is **free for personal, non-commercial use**. Commercial use, redistribution, white-labeling, bundling, or distribution requires a separate license agreement.
+Mac.apk is **free for personal, non-commercial use**. Commercial use, redistribution,
+white-labeling, bundling, or distribution requires a separate license agreement.
 
-By downloading and installing MacDroid, you agree to the [End User License Agreement](EULA.md). The full legal text is in [LICENSE](LICENSE).
+By downloading and installing Mac.apk, you agree to the
+[End User License Agreement](EULA.md). The full legal text is in [LICENSE](LICENSE).
 
 ## Disclaimer
 
-MacDroid is provided "as is", with no warranty of any kind. You are responsible for the Android apps you choose to load, and Voltare cannot test, audit, or vouch for any third-party APK. Voltare is not liable for damages, data loss, malware, security incidents, copyright disputes, or any other consequence of code that runs through MacDroid.
+Mac.apk is provided "as is", with no warranty of any kind. You are responsible for the
+Android apps you choose to load, and Voltare cannot test, audit, or vouch for any
+third-party APK. Voltare is not liable for damages, data loss, malware, security
+incidents, copyright disputes, or any other consequence of code that runs through
+Mac.apk.
 
 ## Links
 
