@@ -186,16 +186,27 @@ in your **Applications** folder, under its own name and with its own icon — so
 or Launchpad, and pinnable like anything else. You do not have to open Mac.apk
 first, and you do not go through a launcher every time.
 
-Your Android apps keep their files in `~/Documents/android` by default — you can
-change that in **Settings → App files**. If an app ever gets into a bad state,
-deleting its folder there is the clean reset, and the app will start fresh next
-launch.
+**An Android app's saved data lives inside its own `.app`**, the same way the app
+itself does. That keeps everything self-contained — one app, one bundle, nothing
+scattered around your home folder — but it has one consequence worth knowing.
 
-The Mac.apk control panel remains the place to see everything you have installed
-and to remove things. Uninstalling asks you to confirm first, naming exactly what is
-about to go, and moves the app to the Trash. **Your saved data is kept by default**,
-so reinstalling the same version picks up where you left off — there is a checkbox in
-the confirmation if you want that data deleted permanently instead.
+> ### ⚠ Uninstall from the Mac.apk control panel, not by dragging to the Trash
+>
+> Because the saves are inside the bundle, **dragging an Android app to the Trash
+> takes your saved data with it.** There is no warning, because as far as macOS is
+> concerned you just deleted an app.
+>
+> Uninstalling from the Mac.apk control panel does the right thing instead: it shows
+> you how much saved data there is, **sets that data aside before removing the app**,
+> and reinstalling the same version puts it back where it was. If you would rather
+> the data were destroyed too, there is a checkbox for that in the confirmation.
+>
+> One detail: kept data is matched **per version**. Reinstalling the exact version you
+> removed restores your saves; installing a different version starts fresh and leaves
+> the old data waiting for its own version.
+
+The Mac.apk control panel is the place to see everything you have installed and to
+remove things, and it names exactly what is about to go before it does anything.
 
 ---
 
