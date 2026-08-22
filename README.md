@@ -8,9 +8,9 @@
 
 ---
 
-> **Alpha.** Mac.apk is early software under active development. Some apps run
-> beautifully, some run partially, and some do not run yet. It is stable enough
-> to use and interesting enough to explore, and it improves with every build.
+**Alpha.** Mac.apk is early software under active development. Some apps run
+beautifully, some run partially, and some do not run yet. It is stable enough to use
+and interesting enough to explore, and it improves with every build.
 
 ## What it is
 
@@ -34,11 +34,11 @@ to manage, no separate desktop to switch into.
 |---|---|
 | **macOS 26.4 (Tahoe) or newer** | Required, not recommended |
 | **Apple Silicon** | M1, M2, M3, M4 or newer |
-| **Disk** | ~240 MB for Mac.apk and its runtime. Apps need considerably more than their APK — see below |
+| **Disk** | ~240 MB for Mac.apk and its runtime. Apps need considerably more than their APK. See below |
 
 **A note on disk space.** Mac.apk prepares each Android app the first time you
 install it, and keeps that prepared form so subsequent launches are fast. The
-result is that an installed app takes noticeably more room than its APK did — a
+result is that an installed app takes noticeably more room than its APK did: a
 large 3D game can occupy several hundred megabytes, occasionally more. If you are
 installing a lot of big games, budget accordingly. Uninstalling an app from the
 Mac.apk control panel reclaims all of it.
@@ -47,7 +47,7 @@ Mac.apk control panel reclaims all of it.
 apps that contain native code requires a platform capability that Apple introduced
 in macOS 26.4. On earlier versions that capability simply does not exist, and native
 Android code would misbehave in ways that are silent and very difficult to diagnose
-— failures would be intermittent and misleading rather than obvious. Rather than
+and failures would be intermittent and misleading rather than obvious. Rather than
 ship that,
 Mac.apk checks for the capability at runtime and refuses to run native Android code
 without it.
@@ -68,7 +68,7 @@ and drag **Mac.apk** into your **Applications** folder. The disk image gives you
 Applications shortcut to drop it on.
 
 Mac.apk is signed with an Apple Developer ID and notarized by Apple, so it opens
-normally — no right-click-to-open, no "unidentified developer" warning, and no
+normally, with no right-click-to-open, no "unidentified developer" warning, and no
 trip to System Settings.
 
 ### 2. Open Mac.apk
@@ -84,19 +84,19 @@ This unpacks the Android runtime that your apps will actually execute. It is a
 one-time, per-user step, it does not need your password, and it takes a few seconds.
 The indicator will change to **Runtime: Installed**.
 
-> If you skip this step, Mac.apk will quietly install the runtime for you the first
-> time you try to install an Android app. Doing it deliberately here just means you
-> see it happen rather than wondering what the pause was.
+If you skip this step, Mac.apk installs the runtime for you the first time you try to
+install an Android app. Doing it deliberately here just means you see it happen rather
+than wondering what the pause was.
 
 ### 4. Make Mac.apk the default for APK files
 
 Open **Settings** (the gear icon at the top right of the control panel), find
 **File types**, and click **Make Default**.
 
-macOS will ask you to confirm — this is a system prompt, and macOS reserves that
+macOS will ask you to confirm. This is a system prompt, and macOS reserves that
 choice for you rather than letting an app take it silently. Approve it, and from
-then on `.apk` files — and the `.apkm`, `.xapk`, `.apks` and `.apkx` split-bundle
-formats — belong to Mac.apk.
+then on `.apk` files, plus the `.apkm`, `.xapk`, `.apks` and `.apkx` split-bundle
+formats, belong to Mac.apk.
 
 **You are done.** From here, installing an Android app is a double-click.
 
@@ -104,16 +104,16 @@ formats — belong to Mac.apk.
 
 ## Installing Android apps
 
-> **The first launch of any app is slow.** Mac.apk prepares the app the first time
-> you install or open it, which can take up to a minute for a large one. It is doing
-> work, not hanging, and it only happens once — later launches are fast. Please don't
-> report the first launch as a freeze.
+**The first launch of any app is slow.** Mac.apk prepares the app the first time you
+install or open it, which can take up to a minute for a large one. It is doing work,
+not hanging, and it only happens once, and later launches are fast. Please don't report
+the first launch as a freeze.
 
 ### Double-click an APK
 
 Once step 4 is done, double-clicking any `.apk` in Finder hands it to Mac.apk, which
-walks you through installing it. Split bundles — `.apkm`, `.xapk`, `.apks` and
-`.apkx` — work the same way and are merged for you automatically.
+walks you through installing it. Split bundles (`.apkm`, `.xapk`, `.apks` and
+`.apkx`) work the same way and are merged for you automatically.
 
 ### Drag and drop
 
@@ -128,82 +128,85 @@ they can install apps.** You do not have to find APK files yourself.
 
 [F-Droid](https://f-droid.org) is the open-source Android app catalog. Install the
 F-Droid APK once, open it in Mac.apk, and browse and install from its whole catalog
-the way you would on a phone. Downloads, installs and updates all work.
+the way you would on a phone. Browsing, downloading and installing all work.
 
 #### Aurora Store
 
 [Aurora Store](https://auroraoss.com) is an open-source client for the Google Play
-catalog — the same apps you would find on a phone. It runs on Mac.apk and installs
+catalog, the same apps you would find on a phone. It runs on Mac.apk and installs
 from that catalog, so between it and F-Droid most of what you would want is a search
 away rather than a file you have to go hunting for.
 
 It needs **one setup step** first, and it will not download anything until you do it:
 
-> ### ⚠ Aurora Store needs a device profile
->
-> Mac.apk reports itself honestly — it tells apps it is a Mac.apk device, because
-> pretending to be a specific certified Android handset is not something this project
-> does. Google's servers, however, will only serve app downloads to a device they
-> recognize, so Aurora needs to be told which device to ask as.
->
-> Aurora has this built in. Set it up once:
->
-> 1. Open **Aurora Store** in Mac.apk
-> 2. Tap **More** (top right of the catalogue) → **Spoof manager** → **Device**
-> 3. Select **Pixel Tablet**
-> 4. Restart Aurora Store when it prompts you
-> 5. **Sign in again, Anonymous.** This step is required, not optional — the device
->    profile is sent to Google only at sign-in, so changing it without a fresh login
->    silently does nothing at all.
->
-> **Use the Pixel Tablet profile specifically.** Aurora bundles more than twenty, but
-> Pixel Tablet is the one whose architecture matches Mac.apk exactly, so the app builds
-> Google serves you are the ones that actually run here rather than builds for a
-> different kind of chip. It is also the profile we test against, and the first thing
-> we will ask about if you report a problem with a store-installed app.
->
-> This is a normal Aurora Store feature that Aurora ships for exactly this purpose,
-> and it affects only which catalog Google shows you.
+> [!IMPORTANT]
+> Aurora Store will not download anything until you give it a device profile. This is
+> a one-time setup step, inside Aurora itself.
 
-> ### Installs from inside an app ask for Touch ID
->
-> When F-Droid or Aurora Store installs or removes something, macOS asks you to
-> authenticate first — Touch ID, or your password. That is deliberate and cannot be
-> turned off. An Android app running on your Mac should never be able to install or
-> delete software without you personally approving it, so the approval is enforced
-> outside the Android app entirely. Expect the prompt; it is not a bug.
+Mac.apk reports itself honestly: it tells apps it is a Mac.apk device, because
+pretending to be a specific certified Android handset is not something this project
+does. Google's servers, however, only serve app downloads to a device they recognise,
+so Aurora needs to be told which device to ask as. Aurora has this built in.
 
-**A note on what stores can and cannot do:** you can browse, download, install,
-update and uninstall. You cannot make purchases — see
+1. Open **Aurora Store** in Mac.apk
+2. Tap **More** (top right of the catalogue), then **Spoof manager**, then **Device**
+3. Select **Pixel Tablet**
+4. Restart Aurora Store when it prompts you
+5. **Sign in again, Anonymous.** This step is required, not optional. The device
+   profile is sent to Google only at sign-in, so changing it without a fresh login
+   silently does nothing at all.
+
+**Use the Pixel Tablet profile specifically.** Aurora bundles more than twenty, but
+Pixel Tablet is the one whose architecture matches Mac.apk exactly, so the app builds
+Google serves you are the ones that actually run here, rather than builds for a
+different kind of chip. It is also the profile we test against, and the first thing we
+will ask about if you report a problem with a store-installed app.
+
+This is a normal Aurora Store feature that Aurora ships for exactly this purpose, and
+it affects only which catalog Google shows you.
+
+### Installs from inside an app ask for Touch ID
+
+When F-Droid or Aurora Store installs or removes something, macOS asks you to
+authenticate first with Touch ID or your password. That is deliberate and cannot be
+turned off. An Android app running on your Mac should never be able to install or
+delete software without you personally approving it, so the approval is enforced
+outside the Android app entirely. Expect the prompt; it is not a bug.
+
+**A note on what stores can and cannot do:** you can browse, download, install and
+uninstall. Updating through a store is not something we have tested, so treat it as
+unproven rather than broken. You cannot make purchases. See
 [For developers and publishers](#for-developers-and-publishers) below for why that
 is deliberate.
 
 ### Managing what you have installed
 
 Installing an Android app gives it a real place on your Mac. It gets its own entry
-in your **Applications** folder, under its own name and with its own icon — so
+in your **Applications** folder, under its own name and with its own icon, so
 "Crossy Road" is a Mac app called Crossy Road, launchable from the Dock, Spotlight
 or Launchpad, and pinnable like anything else. You do not have to open Mac.apk
 first, and you do not go through a launcher every time.
 
 **An Android app's saved data lives inside its own `.app`**, the same way the app
-itself does. That keeps everything self-contained — one app, one bundle, nothing
-scattered around your home folder — but it has one consequence worth knowing.
+itself does. That keeps everything self-contained: one app, one bundle, nothing
+scattered around your home folder. It has one consequence worth knowing.
 
-> ### ⚠ Uninstall from the Mac.apk control panel, not by dragging to the Trash
->
-> Because the saves are inside the bundle, **dragging an Android app to the Trash
-> takes your saved data with it.** There is no warning, because as far as macOS is
-> concerned you just deleted an app.
->
-> Uninstalling from the Mac.apk control panel does the right thing instead: it shows
-> you how much saved data there is, **sets that data aside before removing the app**,
-> and reinstalling the same version puts it back where it was. If you would rather
-> the data were destroyed too, there is a checkbox for that in the confirmation.
->
-> One detail: kept data is matched **per version**. Reinstalling the exact version you
-> removed restores your saves; installing a different version starts fresh and leaves
-> the old data waiting for its own version.
+> [!WARNING]
+> Dragging an Android app to the Trash takes its saved data with it. Uninstall from
+> the Mac.apk control panel instead.
+
+Because the saves live inside the bundle, moving the app to the Trash yourself
+destroys them, and nothing warns you, because as far as macOS is concerned you just
+deleted an app.
+
+Uninstalling from the Mac.apk control panel does the right thing instead. It shows you
+how much saved data there is, sets that data aside before removing the app, and
+reinstalling the same version puts it back where it was. If you would rather the data
+were destroyed too, there is a checkbox for that in the confirmation.
+
+One detail: kept data is matched **per version**. Reinstalling the exact version you
+removed restores your saves; installing a different version starts fresh and leaves
+the old data waiting for its own version.
 
 The Mac.apk control panel is the place to see everything you have installed and to
 remove things, and it names exactly what is about to go before it does anything.
@@ -216,16 +219,16 @@ Mac.apk is in alpha, and honesty serves you better than a marketing number here.
 
 - **Many apps run well.** Utilities, readers, tools, open-source apps and a good
   number of games run properly, including apps with substantial native code.
-- **Some apps run partially.** They start and are usable, but something is wrong —
+- **Some apps run partially.** They start and are usable, but something is wrong:
   a visual glitch, a feature that does not respond, audio that does not play.
 - **Some apps do not run yet.** Usually something specific is missing, and usually
   it gets fixed.
-- **Anything that requires Google Play Services** in a meaningful way — sign-in with
-  Google, Play Billing, push notifications, Play Integrity — will not work. Mac.apk
+- **Anything that requires Google Play Services** in a meaningful way (sign-in with
+  Google, Play Billing, push notifications, Play Integrity) will not work. Mac.apk
   is not a Google-certified Android device and does not claim to be.
 
 The compatible set grows with every release. If an app you care about does not work,
-tell us — that is genuinely how the list gets shorter.
+tell us. That is genuinely how the list gets shorter.
 
 ---
 
@@ -282,11 +285,12 @@ A good report includes:
 
 - **The Mac.apk version.** Mac.apk → About Mac.apk. (Or select Mac.apk in
   Applications and press ⌘I.)
-- **Your macOS version** (`sw_vers -productVersion` in Terminal, or  → About This Mac).
+- **Your macOS version.** Apple menu, then About This Mac. Or run
+  `sw_vers -productVersion` in Terminal.
 - **Which app**, including where you got it and its version.
 - **What happened**, and what you expected instead. A screenshot is worth a lot.
 - **The app's log**, which is the single most useful attachment. Logs live in
-  `~/Library/Logs/macapk/` — one per app, named
+  `~/Library/Logs/macapk/`, one per app, named
   `app_<package>_<version>.log`. In Finder, press ⇧⌘G and paste that path.
 
 Send it to Kaleb@voltare.us or [open an issue](../../issues/new).
