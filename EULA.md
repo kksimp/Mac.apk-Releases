@@ -1,6 +1,6 @@
 # End User License Agreement
 
-**Version 1.1, 2026-08-22**
+**Version 1.0, 2026-05-19**
 
 This End User License Agreement ("Agreement") is between you ("You" or "User") and Kaleb Simpson / Voltare ("Voltare", "we") and governs your installation and use of the Mac.apk software ("the Software").
 

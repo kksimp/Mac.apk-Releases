@@ -313,6 +313,6 @@ Mac.apk.
 
 ## Links
 
-- **Project page:** https://projects.voltare.us/macdroid.html
+- **Project page:** https://projects.voltare.us/macapk
 - **Commercial licensing:** Kaleb@voltare.us
 - **Bug reports:** Kaleb@voltare.us or [open an issue](../../issues/new)
