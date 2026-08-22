@@ -47,7 +47,8 @@ Mac.apk control panel reclaims all of it.
 apps that contain native code requires a platform capability that Apple introduced
 in macOS 26.4. On earlier versions that capability simply does not exist, and native
 Android code would misbehave in ways that are silent and very difficult to diagnose
-— the app would not crash cleanly, it would slowly go wrong. Rather than ship that,
+— failures would be intermittent and misleading rather than obvious. Rather than
+ship that,
 Mac.apk checks for the capability at runtime and refuses to run native Android code
 without it.
 
@@ -89,7 +90,8 @@ The indicator will change to **Runtime: Installed**.
 
 ### 4. Make Mac.apk the default for APK files
 
-In the control panel, click **Make Default**.
+Open **Settings** (the gear icon at the top right of the control panel), find
+**File types**, and click **Make Default**.
 
 macOS will ask you to confirm — this is a system prompt, and macOS reserves that
 choice for you rather than letting an app take it silently. Approve it, and from
@@ -101,6 +103,11 @@ formats — belong to Mac.apk.
 ---
 
 ## Installing Android apps
+
+> **The first launch of any app is slow.** Mac.apk prepares the app the first time
+> you install or open it, which can take up to a minute for a large one. It is doing
+> work, not hanging, and it only happens once — later launches are fast. Please don't
+> report the first launch as a freeze.
 
 ### Double-click an APK
 
@@ -126,7 +133,11 @@ the way you would on a phone. Downloads, installs and updates all work.
 #### Aurora Store
 
 [Aurora Store](https://auroraoss.com) is an open-source client for the Google Play
-catalog. It works on Mac.apk, including installing apps, with **one required setting**:
+catalog — the same apps you would find on a phone. It runs on Mac.apk and installs
+from that catalog, so between it and F-Droid most of what you would want is a search
+away rather than a file you have to go hunting for.
+
+It needs **one setup step** first, and it will not download anything until you do it:
 
 > ### ⚠ Aurora Store needs a device profile
 >
@@ -138,18 +149,29 @@ catalog. It works on Mac.apk, including installing apps, with **one required set
 > Aurora has this built in. Set it up once:
 >
 > 1. Open **Aurora Store** in Mac.apk
-> 2. Go to **Settings → Spoof Manager → Device**
+> 2. Tap **More** (top right of the catalogue) → **Spoof manager** → **Device**
 > 3. Select **Pixel Tablet**
-> 4. Restart Aurora Store when it asks
+> 4. Restart Aurora Store when it prompts you
+> 5. **Sign in again, Anonymous.** This step is required, not optional — the device
+>    profile is sent to Google only at sign-in, so changing it without a fresh login
+>    silently does nothing at all.
 >
-> **Use the Pixel Tablet profile.** That is the one Mac.apk is tested against, so
-> the app builds Google serves you are the ones most likely to run well here. Other
-> profiles may work — Aurora ships more than twenty — but Pixel Tablet is the one we
-> verify against, and it is what we will ask about first if you report a problem
-> with a store-installed app.
+> **Use the Pixel Tablet profile specifically.** Aurora bundles more than twenty, but
+> Pixel Tablet is the one whose architecture matches Mac.apk exactly, so the app builds
+> Google serves you are the ones that actually run here rather than builds for a
+> different kind of chip. It is also the profile we test against, and the first thing
+> we will ask about if you report a problem with a store-installed app.
 >
 > This is a normal Aurora Store feature that Aurora ships for exactly this purpose,
 > and it affects only which catalog Google shows you.
+
+> ### Installs from inside an app ask for Touch ID
+>
+> When F-Droid or Aurora Store installs or removes something, macOS asks you to
+> authenticate first — Touch ID, or your password. That is deliberate and cannot be
+> turned off. An Android app running on your Mac should never be able to install or
+> delete software without you personally approving it, so the approval is enforced
+> outside the Android app entirely. Expect the prompt; it is not a bug.
 
 **A note on what stores can and cannot do:** you can browse, download, install,
 update and uninstall. You cannot make purchases — see
@@ -164,9 +186,16 @@ in your **Applications** folder, under its own name and with its own icon — so
 or Launchpad, and pinnable like anything else. You do not have to open Mac.apk
 first, and you do not go through a launcher every time.
 
+Your Android apps keep their files in `~/Documents/android` by default — you can
+change that in **Settings → App files**. If an app ever gets into a bad state,
+deleting its folder there is the clean reset, and the app will start fresh next
+launch.
+
 The Mac.apk control panel remains the place to see everything you have installed
-and to remove things. Uninstalling deletes the app and its data, and asks you to
-confirm before it does — naming exactly what is about to be removed.
+and to remove things. Uninstalling asks you to confirm first, naming exactly what is
+about to go, and moves the app to the Trash. **Your saved data is kept by default**,
+so reinstalling the same version picks up where you left off — there is a checkbox in
+the confirmation if you want that data deleted permanently instead.
 
 ---
 
@@ -195,14 +224,15 @@ Mac.apk runs your Android app on macOS, but two things that work on Android do n
 work here: advertising SDKs and in-app purchases. This is by design, not an oversight,
 and we want to explain why.
 
-Ad networks (Google AdMob, Unity Ads, AppLovin, IronSource, Vungle, and others)
-require apps to be distributed through approved channels and to run on attested
+Ad networks require apps to be distributed through approved channels and to run on attested
 Android devices. Their terms of service prohibit ad serving in modified runtimes, and
 their fraud-detection systems are aggressive about flagging traffic that doesn't match
 a real Android device fingerprint. Attempting to serve real ads through Mac.apk would
 risk getting your AdMob account terminated for facilitating fraud, which would harm
-you, not help you. So we stub ad SDKs as no-ops. Apps continue running normally; ads
-simply don't display.
+you, not help you. So Mac.apk reaches no ad backend at all: an ad request initializes
+normally and then returns **no fill**, exactly as a real device with no reachable ad
+configuration does. No impression, click, or paid event is ever fabricated. Apps keep
+running; ads simply don't display.
 
 In-app purchases are blocked for the same structural reasons. Google Play Billing
 requires a connection to Google Play Services and an attested device, neither of which
@@ -239,11 +269,14 @@ Bug reports are useful to us, and the alpha is the point at which they matter mo
 
 A good report includes:
 
-- **The Mac.apk version.** Select Mac.apk in your Applications folder and press
-  ⌘I (File → Get Info); the version is at the top of the info window.
+- **The Mac.apk version.** Mac.apk → About Mac.apk. (Or select Mac.apk in
+  Applications and press ⌘I.)
 - **Your macOS version** (`sw_vers -productVersion` in Terminal, or  → About This Mac).
 - **Which app**, including where you got it and its version.
 - **What happened**, and what you expected instead. A screenshot is worth a lot.
+- **The app's log**, which is the single most useful attachment. Logs live in
+  `~/Library/Logs/macapk/` — one per app, named
+  `app_<package>_<version>.log`. In Finder, press ⇧⌘G and paste that path.
 
 Send it to Kaleb@voltare.us or [open an issue](../../issues/new).
 
