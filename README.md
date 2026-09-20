@@ -34,23 +34,24 @@ to manage, no separate desktop to switch into.
 |---|---|
 | **macOS 26.4 (Tahoe) or newer** | Required, not recommended |
 | **Apple Silicon** | M1, M2, M3, M4 or newer |
-| **Disk** | ~240 MB for Mac.apk and its runtime. Apps need considerably more than their APK. See below |
+| **Disk** | ~280 MB for Mac.apk and its runtime. Apps need more than their APK. See below |
 
-**A note on disk space.** Mac.apk prepares each Android app the first time you
-install it, and keeps that prepared form so subsequent launches are fast. The
-result is that an installed app takes noticeably more room than its APK did: a
-large 3D game can occupy several hundred megabytes, occasionally more. If you are
-installing a lot of big games, budget accordingly. Uninstalling an app from the
-Mac.apk control panel reclaims all of it.
+**A note on disk space.** An installed Android app is laid out the way Android
+itself lays one out: the APK stays as the installed app, its native libraries are
+unpacked next to it, and its code is converted for the Mac the first time it runs
+and kept so later launches are fast. The result is that an installed app takes
+roughly one and a half to three times the size of its APK, and a large 3D game can
+sit a few hundred megabytes above its APK. If you are installing a lot of big
+games, budget accordingly. Uninstalling an app from the Mac.apk control panel
+reclaims all of it.
 
 **macOS 26.4 is a hard floor and Mac.apk will not work around it.** Running Android
 apps that contain native code requires a platform capability that Apple introduced
 in macOS 26.4. On earlier versions that capability simply does not exist, and native
-Android code would misbehave in ways that are silent and very difficult to diagnose
-and failures would be intermittent and misleading rather than obvious. Rather than
-ship that,
-Mac.apk checks for the capability at runtime and refuses to run native Android code
-without it.
+Android code would misbehave in ways that are silent and very difficult to diagnose:
+failures would be intermittent and misleading rather than obvious. Rather than ship
+that, Mac.apk checks for the capability at runtime and refuses to run native Android
+code without it.
 
 Intel Macs are not supported and will not be. Mac.apk runs Android's ARM code
 directly on your ARM processor, which is not something an Intel chip can do.
@@ -100,6 +101,13 @@ formats, belong to Mac.apk.
 
 **You are done.** From here, installing an Android app is a double-click.
 
+### Updating Mac.apk
+
+Mac.apk does not update itself. When a newer release is out, download its disk
+image and drag the new Mac.apk over the old one in Applications. Your installed
+Android apps and their saved data are untouched, and they pick up the new runtime
+the next time they launch.
+
 ---
 
 ## Installing Android apps
@@ -113,7 +121,8 @@ the first launch as a freeze.
 
 Once step 4 is done, double-clicking any `.apk` in Finder hands it to Mac.apk, which
 walks you through installing it. Split bundles (`.apkm`, `.xapk`, `.apks` and
-`.apkx`) work the same way and are merged for you automatically.
+`.apkx`) work the same way: their parts are installed together as one app, the way
+Android installs them.
 
 ### Drag and drop
 
@@ -152,9 +161,10 @@ so Aurora needs to be told which device to ask as. Aurora has this built in.
 2. Tap **More** (top right of the catalogue), then **Spoof manager**, then **Device**
 3. Select **Pixel Tablet**
 4. Restart Aurora Store when it prompts you
-5. **Sign in again, Anonymous.** This step is required, not optional. The device
-   profile is sent to Google only at sign-in, so changing it without a fresh login
-   silently does nothing at all.
+5. **Sign in again.** This step is required, not optional. The device profile is
+   sent to Google only at sign-in, so changing it without a fresh login silently
+   does nothing at all. Anonymous is the sign-in we test with; Aurora's own Google
+   sign-in screen works too if you would rather use your account.
 
 **Use the Pixel Tablet profile specifically.** Aurora bundles more than twenty, but
 Pixel Tablet is the one whose architecture matches Mac.apk exactly, so the app builds
@@ -164,6 +174,14 @@ will ask about if you report a problem with a store-installed app.
 
 This is a normal Aurora Store feature that Aurora ships for exactly this purpose, and
 it affects only which catalog Google shows you.
+
+### Signing in with Google
+
+The person icon at the top of the Mac.apk window opens **Accounts**. **Sign in with
+Google** there opens Google's own sign-in page, and the account is then available to
+the Android apps you run, the way an account added to a phone is. That is what lets
+an app you bought on Google Play check its licence, and what an app that asks for a
+Google account gets when it asks. It is optional; nothing else in Mac.apk needs it.
 
 ### Installs from inside an app ask for Touch ID
 
@@ -223,9 +241,16 @@ Mac.apk is in alpha, and honesty serves you better than a marketing number here.
   a visual glitch, a feature that does not respond, audio that does not play.
 - **Some apps do not run yet.** Usually something specific is missing, and usually
   it gets fixed.
-- **Anything that requires Google Play Services** in a meaningful way (sign-in with
-  Google, Play Billing, push notifications, Play Integrity) will not work. Mac.apk
-  is not a Google-certified Android device and does not claim to be.
+- **Google Play Services: partly.** Mac.apk ships its own implementation of the
+  pieces most apps use, and it answers honestly, as a Mac.apk device. Signing in
+  with a Google account works (see above), so apps bought on Google Play can check
+  their licence. Apps can register for push notifications and get real tokens;
+  delivery of pushes from Google's servers is implemented but is the one part not
+  yet verified end to end, so treat notifications as unproven. What will not work:
+  Play Billing (nothing can be bought, see below), Play Integrity (a hardware-attested
+  verdict Mac.apk cannot honestly give), and apps that insist on Google's own signed
+  Play Services package. Mac.apk is not a Google-certified Android device and does
+  not claim to be.
 
 The compatible set grows with every release. If an app you care about does not work,
 tell us. That is genuinely how the list gets shorter.
