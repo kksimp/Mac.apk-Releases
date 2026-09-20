@@ -232,6 +232,53 @@ tell us. That is genuinely how the list gets shorter.
 
 ---
 
+## Advanced: flags and settings
+
+Most people never need any of this. Every app installs and runs with the defaults, and
+the Mac.apk window's Settings cover the everyday choices (window size, orientation,
+logging). But the runtime also reads a set of environment variables and command-line
+flags, and a few of them are worth knowing when something needs adjusting or when you
+are gathering a bug report.
+
+**Where to set them**
+
+- **In the Mac.apk window.** Settings has a **Default environment** editor whose
+  key=value lines apply to every app you launch from the window, and each app's
+  **Get Info** sheet has its own editor for that one app (it wins over the default).
+  These apply to launches started from the Mac.apk window.
+- **From Terminal, for an installed app.** Pass the variable on the `open` command,
+  which hands it to the app's own process:
+
+  ```
+  open --env MACAPK_LOG_LEVEL=7 -a "/Applications/Crossy Road.app"
+  ```
+
+  Or run the app's executable directly with the variable in front of it:
+  `MACAPK_LOG_LEVEL=7 "/Applications/Crossy Road.app/Contents/MacOS/Crossy Road"`.
+
+**The ones worth knowing**
+
+| Flag | What it does |
+|---|---|
+| `MACAPK_FOLLOW_SYSTEM_APPEARANCE=0` | Forces light mode regardless of the Mac's appearance. Unset (the default) follows macOS's light/dark setting. |
+| `MACAPK_LOG_LEVEL=<0-7>` | How much the app's log records. Unset is the normal amount (Android's INFO floor). `7` records everything, which is what a bug report wants. |
+| `MACAPK_FULLSCREEN=1` (or `--fullscreen`) | Runs the app in a fullscreen window instead of a titled one. |
+| `MACAPK_HIDE_DOCK_ICON=1` (or `--hide-dock-icon`) | Hides the app's Dock icon for that launch. |
+| `--orientation auto\|portrait\|landscape` | Window orientation. `auto` reads the app's own declared orientation and otherwise picks portrait. Also a picker in Settings. |
+| `--width N --height N` | An explicit window size in pixels instead of the orientation's default. Also a picker in Settings. |
+| `MACAPK_ANDROID_ROOT=<dir>` (or `--android-root`) | Where the runtime keeps the Android filesystem it presents to the app. An installed app always uses the folder inside its own bundle; this matters only when running an APK directly. |
+| `MACAPK_FORCE_ABI=armeabi-v7a` (or `--force-abi`) | Runs the app's 32-bit ARM native code (through the recompiler) even when it ships 64-bit code. For diagnosis; also the "Force ARM32" toggle in the Mac.apk window's developer menu. |
+| `MACAPK_DEV_TRACE=1` (or `--dev-trace`) | Turns on the broad diagnostic trace. Expect about one frame per second in a big game while it is on. Also the "Verbose trace" toggle in the developer menu. |
+| `MACAPK_INSTALL_NOUI=1` | Skips the install confirmation dialog, for scripted installs: `open --env MACAPK_INSTALL_NOUI=1 -a /Applications/Mac.apk.app <apk>`. |
+| `MACAPK_EXTRACT_ASSETS=1` | Restores the older behaviour of copying an app's assets out onto disk instead of reading them from the installed APK in place. Only worth trying if an app that used to work stops finding its own files. |
+| `MACAPK_ALLOW_UNSAFE_X18=1` | Lets an app with 64-bit native code load even when the macOS 26.4 check for it fails. Diagnosis only; it does not make an unsupported macOS work. |
+
+The runtime has a few hundred more, nearly all of them diagnostic switches and bisect
+gates for developers. Every one of them, with its default, its accepted values and
+what it does, is listed in [FLAGS.md](FLAGS.md).
+
+---
+
 ## For developers and publishers
 
 Mac.apk runs your Android app on macOS, but two things that work on Android do not
