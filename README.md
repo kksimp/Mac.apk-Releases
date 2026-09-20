@@ -383,6 +383,20 @@ third-party APK. Voltare is not liable for damages, data loss, malware, security
 incidents, copyright disputes, or any other consequence of code that runs through
 Mac.apk.
 
+**Only install APKs you trust.** An Android app running under Mac.apk runs as ordinary
+native code with your macOS user account's permissions. There is no phone-style app
+sandbox around it: it can read and write your files the same way any Mac app you run
+can. Treat an APK exactly as you would any program you download and run yourself, and
+get it from a source you trust.
+
+## Third-party software
+
+Mac.apk bundles several open-source components (ANGLE, MoltenVK and the Vulkan loader,
+Capstone, libpng, Bouncy Castle, a JRE built from OpenJDK, and the Android platform
+resources built from AOSP source). Each is used under its own licence; the full
+notices are in [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt), and a copy ships
+inside the app at `Contents/Resources/THIRD_PARTY_NOTICES.txt`.
+
 ## Links
 
 - **Project page:** https://projects.voltare.us/macapk
