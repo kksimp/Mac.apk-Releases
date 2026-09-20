@@ -92,7 +92,7 @@ The GUI translates a small set of pickers/toggles into the CLI flags and env var
 
 Order of application: derived/automatic vars first, then Dev-menu toggles, then the quiet-logging default, then `model.defaultEnv` (global user text), then the selected app's own `app.env` (per-app user text) -- so a per-app override always wins.
 
-Separately, the tiny per-app stub every installed app actually runs reads `MACAPK_STUB_LOG` (`=0` disables its own stub-level logging) and `MACAPK_STUB_NO_UI` (`=1` suppresses its error alert panel, so an unattended harness doesn't block on a dialog forever), and the installer honours `MACAPK_RUNTIME_ROOT` and `MACAPK_CANONICAL_APP` overrides for where the staged shared runtime and the one canonical installed app live.
+Separately, the tiny per-app stub every installed app actually runs reads `MACAPK_STUB_LOG` (`=0` disables its own stub-level logging), `MACAPK_STUB_NO_UI` (`=1` suppresses its error alert panel, so an unattended harness doesn't block on a dialog forever) and its own internal `MACAPK_STUB_REFRESHED` re-exec marker (v1.0.1592: a stub that differs from the installed Mac.apk's template replaces itself and re-executes), and the installer honours `MACAPK_RUNTIME_ROOT` and `MACAPK_CANONICAL_APP` overrides for where the staged shared runtime and the one canonical installed app live.
 
 ---
 
@@ -147,6 +147,7 @@ Diagnostic/trace flags are kept with the subsystem whose file reads them (e.g. `
 | MACAPK_SKIP_QOS_BOOST | Off: the QoS boost call runs | `1` | Skips a QoS-class boost call during boot, as a targeted workaround (see `docs/runtime_2026-07-23.md`) for whatever cost that call was found to have. | bisect |
 | MACAPK_STACK_PAD | Off (0) | An integer *n* | Diagnostic: pads the launch dispatch stack by *n* frames, ARM32-path-only companion to `MACAPK_CLINIT_PAD` for isolating "the launch stack got deeper" symptoms. | diag |
 | MACAPK_STUB_LOG | On: the per-app stub logs its own diagnostic lines | `0` | `=0` turns the per-app stub's own logging off outright. | dev |
+| MACAPK_STUB_REFRESHED | unset | `1` (set by the stub itself) | INTERNAL re-exec marker, never for a user to set: when a per-app stub finds its own file differs from the installed Mac.apk's stub template it swaps the template in and re-executes itself with this set, so the fresh copy knows it was just refreshed (it logs "re-executed") and a copy that still differs does not loop; the stub unsets it before handing over to the runtime (v1.0.1592, `StubRefresh` in InstallCore.swift). | dev |
 | MACAPK_TOUCH_DIAG | Off | any non-null value | Traces where a touch lands in the Activity/View dispatch chain (Java side); the native counterpart is the ARM32-side half of this same env var (see the Rendering/Native tables' `MACAPK_TOUCH_DIAG` cross-reference). | diag |
 | MACAPK_TRACE_APPINFO | Off | any non-null value | Traces `ContextWrapper`'s `ApplicationInfo` resolution path. | diag |
 | MACAPK_TRACE_DEFSTYLE | Off (zero cost when unset) | any non-null value | Traces the 4-arg `obtainStyledAttributes`/theme `defStyleAttr` resolution chain across `Context`, `Resources`, `ContextThemeWrapper`, and `View` -- the flag the theme-anchor investigations cite repeatedly. | diag |
