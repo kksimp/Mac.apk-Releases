@@ -187,6 +187,49 @@ the Android apps you run, the way an account added to a phone is. That is what l
 an app you bought on Google Play check its licence, and what an app that asks for a
 Google account gets when it asks. It is optional; nothing else in Mac.apk needs it.
 
+Apps that sign you in through a web page (for example an email app's "Sign in with
+Google" button) open that page in your Mac's browser and
+return to the app when you finish, as they would on a phone.
+
+An app's own **"Continue with Google"** button uses the account you added in Accounts:
+you pick the account, and the app receives a sign-in made for that app alone. If no
+account is added yet, the app offers to add one. A few apps refuse to offer Google sign-in
+unless Google Play Services itself is signed by Google; Mac.apk's own implementation is
+honestly not, so in those apps use another way to sign in (email, or a browser-based
+option).
+
+### Trackpad and keyboard
+
+Click to tap, click and drag to swipe or drag. Two fingers on the trackpad act as two
+fingers on a phone screen: pinch to zoom, and apps that need a two-finger hold or gesture
+receive it. In text fields the Mac keyboard types as usual.
+
+### Copy and paste
+
+Copy and paste work both ways between Android apps and your Mac. In a text field,
+**Cmd+C**, **Cmd+X**, **Cmd+V** and **Cmd+A** do what they do in any Mac app, and text
+an Android app copies lands on the Mac clipboard.
+
+### Your files and photos
+
+Android apps see the standard shared folders a phone has, and on Mac.apk those are
+**your real Mac folders**: an app's Pictures, Movies, Music, Download and Documents
+are your `~/Pictures`, `~/Movies`, `~/Music`, `~/Downloads` and `~/Documents`, shared
+by every app the way a phone's storage is. Each app's private data stays inside the app.
+
+- A **gallery** app asks for Android's photos permission first; after you allow it, it
+  shows the pictures in those folders and your **Photos library** (read-only: an Android
+  app can view your Photos, never change or delete them). macOS also asks, once per
+  app, before it lets an app read your Photos library, Documents or Downloads.
+- A **file manager** needs Android's **All files access**, which Mac.apk asks for the
+  way Android does.
+
+> [!NOTE]
+> Be deliberate about which apps you let in. Android's permission is enforced for an
+> app's Java code, but an app that ships native code can read the shared folders
+> without it; macOS's own prompts still protect Documents, Downloads, Desktop and your
+> Photos library.
+
 ### Installs from inside an app ask for Touch ID
 
 When F-Droid or Aurora Store installs or removes something, macOS asks you to
@@ -195,9 +238,9 @@ turned off. An Android app running on your Mac should never be able to install o
 delete software without you personally approving it, so the approval is enforced
 outside the Android app entirely. Expect the prompt; it is not a bug.
 
-**A note on what stores can and cannot do:** you can browse, download, install and
-uninstall. Updating through a store is not something we have tested, so treat it as
-unproven rather than broken. You cannot make purchases. See
+**A note on what stores can and cannot do:** you can browse, download, install,
+update and uninstall. An app a store updates keeps its data, and a store can open the app
+it just installed. You cannot make purchases. See
 [For developers and publishers](#for-developers-and-publishers) below for why that
 is deliberate.
 
