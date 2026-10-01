@@ -193,10 +193,17 @@ return to the app when you finish, as they would on a phone.
 
 An app's own **"Continue with Google"** button uses the account you added in Accounts:
 you pick the account, and the app receives a sign-in made for that app alone. If no
-account is added yet, the app offers to add one. A few apps refuse to offer Google sign-in
-unless Google Play Services itself is signed by Google; Mac.apk's own implementation is
-honestly not, so in those apps use another way to sign in (email, or a browser-based
-option).
+account is added yet, the app offers to add one.
+
+> **Disclaimer: outside the Mac.apk account, "Sign in with Google" does not work on
+> Mac.apk.** Some apps only offer Google sign-in when Google Play Services itself is
+> signed by Google. Mac.apk's Play Services is its own implementation and honestly is
+> not, and Mac.apk will never pretend otherwise. In those apps the Google button
+> does nothing or reports an error, exactly as it does on a phone without Google's Play
+> Services. Use the app's other sign-in options instead (email and password, a username,
+> or a browser-based option). **Reddit** is one of these: on Mac.apk, sign in to Reddit
+> with your email or username. (Reddit chooses its sign-in method from its own servers;
+> where it chooses Android's Credential Manager, the Mac.apk account works.)
 
 ### Trackpad and keyboard
 
