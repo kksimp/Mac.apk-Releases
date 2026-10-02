@@ -2,9 +2,9 @@
 
 Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 
-**64 apps tested:** ✅ 49 work · ⚠️ 10 partly work · ❌ 5 don't work yet
+**62 apps tested:** ✅ 47 work · ⚠️ 10 partly work · ❌ 5 don't work yet
 
-**Legend:** ✅ yes · ⚠️ partly · ❌ not yet · ❔ not tested yet. **Works** means you can use the app or play the game; **Sound** means its audio plays. "before" lists older versions that were also tested.
+**Legend:** ✅ yes · ⚠️ partly · ❌ not yet · ❔ not tested yet. **Works** means you can use the app or play the game; **Sound** means its audio plays. A version with ▸ opens to show the other versions that were tested.
 
 | App | Version | Works | Sound | Notes |
 |:----|:--------|:-----:|:-----:|:------|
@@ -23,7 +23,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 | **Calculator (OpenCalc)** | 3.2.0 | ✅ | ❔ |  |
 | **Candy Crush Saga** | 1.323.0.1 | ✅ | ✅ |  |
 | **Clock** | 2.31 | ⚠️ | ✅ | Cannot add a new clock |
-| **Crossy Road** | 7.13.0<br><sub>before: 7.11.1 ✅</sub> | ✅ | ✅ |  |
+| **Crossy Road** | <details><summary>7.13.0</summary>7.11.1: works ✅, sound ✅</details> | ✅ | ✅ |  |
 | **Dumb Ways to Die** | 36.1.22 | ✅ | ✅ |  |
 | **Duolingo** | 6.82.3 | ⚠️ | ❔ | Can't make a new account or log in |
 | **Efteling** | 5.24.0 | ❌ | ❔ | Stuck on welcome screen. |
@@ -35,14 +35,12 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 | **Gallery** | 1.13.1 | ❌ | ❔ | Needs file permissions fixed. |
 | **Geometry Dash Lite** | 2.2.11 | ✅ | ✅ |  |
 | **Geometry Dash Meltdown** | 2.2.147 | ✅ | ✅ |  |
-| **Hill Climb Racing** | 1.8.1 | ✅ | ✅ |  |
-| **Hill Climb Racing** | 1.43.0 | ✅ | ✅ |  |
-| **Hill Climb Racing** | 1.68.1 | ✅ | ✅ |  |
+| **Hill Climb Racing** | <details><summary>1.68.1</summary>1.43.0: works ✅, sound ✅<br>1.8.1: works ✅, sound ✅</details> | ✅ | ✅ |  |
 | **Instagram** | 445.0.0.45.83 | ⚠️ | ❔ | Weird layout issues. Video choppy and sound inop |
 | **Jetpack 2** | 0.1.60 | ❌ | ❔ | Stuck loading at 59% |
 | **Jetpack Joyride** | 1.3.5 | ✅ | ✅ |  |
 | **Mastodon** | 2.13.1 | ⚠️ | ✅ | Only shows one post |
-| **Mindustry** | 8-fdroid-160.5<br><sub>before: 8-fdroid-158 ✅</sub> | ✅ | ✅ | Online multiplayer currently inop |
+| **Mindustry** | <details><summary>8-fdroid-160.5</summary>8-fdroid-158: works ✅, sound ✅</details> | ✅ | ✅ | Online multiplayer currently inop |
 | **Minecraft** | 1.26.45.1 | ✅ | ✅ | Boots, renders and Xbox sign-in works. |
 | **NewPipe** | 0.29.0 | ⚠️ | ✅ | Some videos play with sound only and buffer constantly |
 | **Now in Android** | 0.1.2 | ✅ | ✅ |  |
@@ -61,7 +59,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 | **Simple Solitaire Collection** | 3.13 | ✅ | ❔ |  |
 | **Smash Hit** | 1.5.14 | ✅ | ✅ |  |
 | **SolitaireCG** | 4.1 | ✅ | ❔ |  |
-| **Subway Surfers** | 3.69.1<br><sub>before: 3.62.0 ✅</sub> | ✅ | ✅ |  |
+| **Subway Surfers** | <details><summary>3.69.1</summary>3.62.0: works ✅, sound ✅</details> | ✅ | ✅ |  |
 | **Super Retro Mega Wars** | 0.32.5 | ✅ | ✅ |  |
 | **Telegram** | 12.9.1 | ✅ | ❔ |  |
 | **Temple Run 2** | 1.133.0 | ⚠️ | ✅ | Playable but crashes |
