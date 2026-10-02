@@ -110,7 +110,8 @@ formats, belong to Mac.apk.
 Mac.apk does not update itself. When a newer release is out, download its disk
 image and drag the new Mac.apk over the old one in Applications. Your installed
 Android apps and their saved data are untouched, and they pick up the new runtime
-the next time they launch.
+the next time they launch (that launch can be slow again while Mac.apk re-prepares
+the app for the new version).
 
 ---
 
@@ -118,8 +119,8 @@ the next time they launch.
 
 **The first launch of any app is slow.** Mac.apk prepares the app the first time you
 install or open it, which can take up to a minute for a large one. It is doing work,
-not hanging, and it only happens once, and later launches are fast. Please don't report
-the first launch as a freeze.
+not hanging, and it happens once per app (and once more after a Mac.apk update), and
+later launches are fast. Please don't report the first launch as a freeze.
 
 ### Double-click an APK
 
@@ -131,6 +132,21 @@ Android installs them.
 ### Drag and drop
 
 Drag an APK onto the Mac.apk window. Same result, useful when Mac.apk is already open.
+
+### Known issues in v1.0.1666
+
+- **Installing an `.apkm` bundle (APKMirror) straight from a USB drive or other slow
+  disk can fail, with nothing installed.** Mac.apk gives up reading the app's name
+  after 5 seconds, and after that one failure every other install in the same Mac.apk
+  session also fails until you quit Mac.apk. Ordinary `.apk` files from the same drive
+  installed normally in testing. **Workaround:** copy the `.apkm` to your Mac's own
+  disk first, then quit and reopen Mac.apk and install it again. Fixed in the next
+  version.
+- **Among Us** does not respond to the keyboard in this version; move with the
+  on-screen joystick (click and drag). A fix is planned for the next version.
+- **Some full-screen ads** (seen with AppLovin in Geometry Dash Meltdown) show an empty
+  page with no close button and ignore Back; quit the app (Cmd+Q) to get out of one.
+- **VLC** still does not run: it crashes once its first-run setup is done.
 
 ### Install from an app store, inside Mac.apk
 
@@ -204,6 +220,10 @@ account is added yet, the app offers to add one.
 > or a browser-based option). **Reddit** is one of these: on Mac.apk, sign in to Reddit
 > with your email or username. (Reddit chooses its sign-in method from its own servers;
 > where it chooses Android's Credential Manager, the Mac.apk account works.)
+
+### Licensing
+
+**Licensing:** Mac.apk does not bypass app licensing. When an app checks its Google Play license, Mac.apk asks Google's servers using your own Google account and passes Google's signed answer back to the app unchanged. The app verifies Google's signature itself, so Mac.apk cannot fake a "licensed" result. If your account didn't buy the app, the check fails just as it would on a real android device. Mac.apk doesn't patch or crack apps.
 
 ### Trackpad and keyboard
 
@@ -309,6 +329,9 @@ its engine, whether it renders, plays and has sound, and what is still wrong.
   Play Services package. Mac.apk is not a Google-certified Android device and does
   not claim to be.
 
+Known problems in specific apps in this release are listed under
+[Known issues in v1.0.1666](#known-issues-in-v101666).
+
 The compatible set grows with every release. If an app you care about does not work,
 tell us. That is genuinely how the list gets shorter.
 
@@ -327,25 +350,27 @@ are gathering a bug report.
 - **In the Mac.apk window.** Settings has a **Default environment** editor whose
   key=value lines apply to every app you launch from the window, and each app's
   **Get Info** sheet has its own editor for that one app (it wins over the default).
-  These apply to launches started from the Mac.apk window.
+  These apply to launches started from the Mac.apk window. The Default environment
+  editor sits in Settings' developer section, which appears once you have clicked the
+  **Mac.apk** title at the top of the window five times in quick succession; the same
+  section holds the developer toggles named below.
 - **From Terminal, for an installed app.** Pass the variable on the `open` command,
   which hands it to the app's own process:
 
   ```
-  open --env MACAPK_LOG_LEVEL=7 -a "/Applications/Crossy Road.app"
+  open --env MACAPK_FOLLOW_SYSTEM_APPEARANCE=0 -a "/Applications/Crossy Road.app"
   ```
 
   Or run the app's executable directly with the variable in front of it:
-  `MACAPK_LOG_LEVEL=7 "/Applications/Crossy Road.app/Contents/MacOS/Crossy Road"`.
+  `MACAPK_FOLLOW_SYSTEM_APPEARANCE=0 "/Applications/Crossy Road.app/Contents/MacOS/Crossy Road"`.
 
 **The ones worth knowing**
 
 | Flag | What it does |
 |---|---|
 | `MACAPK_FOLLOW_SYSTEM_APPEARANCE=0` | Forces light mode regardless of the Mac's appearance. Unset (the default) follows macOS's light/dark setting. |
-| `MACAPK_LOG_LEVEL=<0-7>` | How much the app's log records. Unset is the normal amount (Android's INFO floor). `7` records everything, which is what a bug report wants. |
+| `MACAPK_LOG_LEVEL=<2-7>` | The lowest severity the app's log keeps: 2 verbose, 3 debug, 4 info, 5 warnings, 6 errors; anything below it is dropped. Unset keeps everything, which is what a bug report wants (launches from the Mac.apk window use 4 unless verbose logging is on). A higher number makes the log quieter; `7` leaves it almost empty. |
 | `MACAPK_FULLSCREEN=1` (or `--fullscreen`) | Runs the app in a fullscreen window instead of a titled one. |
-| `MACAPK_HIDE_DOCK_ICON=1` (or `--hide-dock-icon`) | Hides the app's Dock icon for that launch. |
 | `--orientation auto\|portrait\|landscape` | Window orientation. `auto` reads the app's own declared orientation and otherwise picks portrait. Also a picker in Settings. |
 | `--width N --height N` | An explicit window size in pixels instead of the orientation's default. Also a picker in Settings. |
 | `MACAPK_ANDROID_ROOT=<dir>` (or `--android-root`) | Where the runtime keeps the Android filesystem it presents to the app. An installed app always uses the folder inside its own bundle; this matters only when running an APK directly. |
@@ -355,7 +380,7 @@ are gathering a bug report.
 | `MACAPK_EXTRACT_ASSETS=1` | Restores the older behaviour of copying an app's assets out onto disk instead of reading them from the installed APK in place. Only worth trying if an app that used to work stops finding its own files. |
 | `MACAPK_ALLOW_UNSAFE_X18=1` | Lets an app with 64-bit native code load even when the macOS 26.4 check for it fails. Diagnosis only; it does not make an unsupported macOS work. |
 
-The runtime has a few hundred more, nearly all of them diagnostic switches and bisect
+The runtime has over a thousand more, nearly all of them diagnostic switches and bisect
 gates for developers. Every one of them, with its default, its accepted values and
 what it does, is listed in [FLAGS.md](FLAGS.md).
 
@@ -372,10 +397,13 @@ Android devices. Their terms of service prohibit ad serving in modified runtimes
 their fraud-detection systems are aggressive about flagging traffic that doesn't match
 a real Android device fingerprint. Attempting to serve real ads through Mac.apk would
 risk getting your AdMob account terminated for facilitating fraud, which would harm
-you, not help you. So Mac.apk reaches no ad backend at all: an ad request initializes
-normally and then returns **no fill**, exactly as a real device with no reachable ad
-configuration does. No impression, click, or paid event is ever fabricated. Apps keep
-running; ads simply don't display.
+you, not help you. So Mac.apk itself serves, counts and fakes no ads: no impression,
+click, or paid event is ever fabricated. Mac.apk's own stand-in for Google's ad SDK,
+used when an app does not ship that SDK itself, answers every ad request with
+**no fill**, exactly as a real device with no reachable ad configuration does. An ad
+SDK that an app ships inside its own code runs as part of that app, though, so some
+free games do show their full-screen ads on Mac.apk (see
+[Known issues in v1.0.1666](#known-issues-in-v101666)). Apps keep running either way.
 
 In-app purchases are blocked for the same structural reasons. Google Play Billing
 requires a connection to Google Play Services and an attested device, neither of which
@@ -421,6 +449,10 @@ A good report includes:
 - **The app's log**, which is the single most useful attachment. Logs live in
   `~/Library/Logs/macapk/`, one per app, named
   `app_<package>_<version>.log`. In Finder, press ⇧⌘G and paste that path.
+  Since v1.0.1666 the log does not record what you type: key presses and text-box
+  contents are redacted, password fields always. It does still record where you click
+  or tap (a capped number of touches per run) and the text of an app's pop-up "toast"
+  messages, so look it over before you post it anywhere public.
 
 Send it to Kaleb@voltare.us or [open an issue](../../issues/new).
 
