@@ -6,6 +6,10 @@
 [![License: Personal Use](https://img.shields.io/badge/license-Personal%20Use-blue)](LICENSE)
 [![Signed and notarized](https://img.shields.io/badge/signed-notarized%20by%20Apple-000000)](#installation)
 
+### 📱 [Which apps work? See the compatibility list →](COMPATIBILITY.md)
+
+[![Apps tested: 64](https://img.shields.io/badge/apps%20tested-64-6c5ce7)](COMPATIBILITY.md) [![Fully playable: 48](https://img.shields.io/badge/fully%20playable-48-2ea44f)](COMPATIBILITY.md) [![Partly works: 10](https://img.shields.io/badge/partly%20works-10-dfb317)](COMPATIBILITY.md) [![Not yet: 6](https://img.shields.io/badge/not%20yet-6-e05d44)](COMPATIBILITY.md)
+
 ---
 
 **Alpha.** Mac.apk is early software under active development. Some apps run
