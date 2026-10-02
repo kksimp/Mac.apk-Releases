@@ -1,18 +1,18 @@
 # Mac.apk App Compatibility
 
-Which Android apps run on Mac.apk, and how well. Updated 2026-10-01.
+Which Android apps run on Mac.apk, and how well. Updated 2026-10-02.
 
-![apps tested: 64](https://img.shields.io/badge/apps%20tested-64-6c5ce7) ![fully playable: 48](https://img.shields.io/badge/fully%20playable-48-2ea44f) ![partly works: 10](https://img.shields.io/badge/partly%20works-10-dfb317) ![not yet: 6](https://img.shields.io/badge/not%20yet-6-e05d44) ![renders: 64 of 64](https://img.shields.io/badge/renders-64%20of%2064-0a7bbb)
+![apps tested: 64](https://img.shields.io/badge/apps%20tested-64-6c5ce7) ![fully playable: 49](https://img.shields.io/badge/fully%20playable-49-2ea44f) ![partly works: 10](https://img.shields.io/badge/partly%20works-10-dfb317) ![not yet: 5](https://img.shields.io/badge/not%20yet-5-e05d44) ![renders: 64 of 64](https://img.shields.io/badge/renders-64%20of%2064-0a7bbb)
 
 **Legend:** ✅ yes · ⚠️ partly · ❌ no · ❔ not tested yet. Apps are grouped by whether they are playable; Sound is whether in-app audio works.
 
-## ✅ Works (48)
+## ✅ Works (49)
 
 | App | Sound | Notes |
 |:----|:-----:|:------|
 | **1010! Klooni** | ✅ |  |
 | **Alto's Adventure** | ✅ |  |
-| **Among Us** | ✅ |  |
+| **Among Us** | ✅ | Keyboard does not respond in v1.0.1666; move with the on-screen joystick (click and drag). |
 | **Anarch RE** | ✅ |  |
 | **AntennaPod** | ✅ | Now playing does not render right. |
 | **Anuto TD** | ✅ |  |
@@ -26,6 +26,7 @@ Which Android apps run on Mac.apk, and how well. Updated 2026-10-01.
 | **Dumb Ways to Die** | ✅ |  |
 | **F-Droid** | ❔ | Updating Mindustry from F-Droid and then opening it from F-Droid WORKS (install + cross-app launch). |
 | **Feudal Tactics** | ✅ |  |
+| **Flappy Bird** | ✅ |  |
 | **Frozen Bubble** | ✅ |  |
 | **Fruit Ninja** | ✅ |  |
 | **Geometry Dash Lite** | ✅ |  |
@@ -74,13 +75,12 @@ Which Android apps run on Mac.apk, and how well. Updated 2026-10-01.
 | **Temple Run 2** | ✅ | Playable but crashes |
 | **Thunderbird** | ❔ | Sign in with Google works but log in to Thunderbird fails. |
 
-## ❌ Does not work yet (6)
+## ❌ Does not work yet (5)
 
 | App | Sound | Notes |
 |:----|:-----:|:------|
 | **AnkiDroid** | ❔ | Needs permissions fixed |
 | **Efteling** | ❔ | Stuck on welcome screen. |
-| **Flappy Bird** | ✅ | Touch input INOP |
 | **Gallery** | ❔ | Needs file permissions fixed. |
 | **Jetpack 2** | ❔ | Stuck loading at 59% |
 | **VLC** | ❔ | Crashes when attempting to grant permissions. |
