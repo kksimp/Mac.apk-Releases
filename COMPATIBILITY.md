@@ -2,7 +2,7 @@
 
 Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 
-**62 apps tested:** ✅ 47 work · ⚠️ 10 partly work · ❌ 5 don't work yet
+**63 apps tested:** ✅ 48 work · ⚠️ 10 partly work · ❌ 5 don't work yet
 
 **Legend:** ✅ yes · ⚠️ partly · ❌ not yet · ❔ not tested yet. **Works** means you can use the app or play the game; **Sound** means its audio plays. An app tested at more than one version has a row for each, newest first.
 
@@ -57,6 +57,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 | **Plague Inc.** | 1.24.4 | ⚠️ | ⚠️ | INSANE VOLUME, be WARNED. News doesn't work |
 | **Puzzles** | 2025-09-12-1919-23762278-fdroid | ✅ | ❔ |  |
 | **Reddit** | 2026.21.0 | ⚠️ | ✅ | Cannot log in via Google. Needs zoomed out when in full screen. Scrolling is odd. |
+| **Rocket League Sideswipe** | 1.12.5 | ✅ | ✅ | Needs the next Mac.apk release (not in v1.0.1666). |
 | **Rocks 'n' Diamonds** | 4.2.2.0 | ✅ | ✅ |  |
 | **Shattered Pixel Dungeon** | 3.3.8 | ✅ | ✅ |  |
 | **Signal** | 8.20.4 | ✅ | ❔ |  |
