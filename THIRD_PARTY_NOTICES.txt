@@ -1272,8 +1272,11 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 GLib is free software under the GNU Lesser General Public License, version
 2.1 or (at your option) any later version. It ships as a separate, dynamically
 linked library (Contents/Resources/jre/lib/libglib-2.0.0.dylib), unmodified
-from the Homebrew build of the version named above; you may replace it with a
-compatible build of your own. Corresponding source for that exact version:
+from the Homebrew build of the version named above apart from Mach-O load-path
+metadata. The complete corresponding source (upstream tarball, Homebrew's patch,
+the build recipe) is attached to the same GitHub release as the Mac.apk download
+(https://github.com/kksimp/Mac.apk-Releases/releases), with
+LGPL-SOURCE-README.txt explaining how to use a modified build. Upstream:
 https://download.gnome.org/sources/glib/ . The LGPL-2.1 text follows.
 
                   GNU LESSER GENERAL PUBLIC LICENSE
@@ -1786,9 +1789,11 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 libintl is free software under the GNU Lesser General Public License, version
 2.1 or (at your option) any later version (the full LGPL-2.1 text is reproduced
 in the GLib entry above). It ships as a separate, dynamically linked library,
-unmodified from the Homebrew build of the version named above; you may replace
-it with a compatible build of your own. Corresponding source for that exact
-version: https://ftp.gnu.org/pub/gnu/gettext/ .
+unmodified from the Homebrew build of the version named above apart from Mach-O
+load-path metadata. The complete corresponding source (upstream tarball and the
+build recipe) is attached to the same GitHub release as the Mac.apk download
+(https://github.com/kksimp/Mac.apk-Releases/releases); see LGPL-SOURCE-README.txt
+there. Upstream: https://ftp.gnu.org/pub/gnu/gettext/ .
 
 
 --------------------------------------------------------------------------------

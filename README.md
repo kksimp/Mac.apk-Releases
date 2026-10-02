@@ -481,10 +481,19 @@ get it from a source you trust.
 ## Third-party software
 
 Mac.apk bundles several open-source components (ANGLE, MoltenVK and the Vulkan loader,
-Capstone, libpng, Bouncy Castle, a JRE built from OpenJDK, and the Android platform
-resources built from AOSP source). Each is used under its own licence; the full
-notices are in [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt), and a copy ships
-inside the app at `Contents/Resources/THIRD_PARTY_NOTICES.txt`.
+Capstone, libpng, libvpx, stb_vorbis, Bouncy Castle, a JRE built from OpenJDK together
+with the libraries its font and image code uses, such as FreeType, HarfBuzz and GLib,
+and the Android platform resources built from AOSP source). Each is used under its own
+licence; the full notices are in [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt),
+and a copy ships inside the app at `Contents/Resources/THIRD_PARTY_NOTICES.txt` (the
+copy inside v1.0.1666 predates the libraries added on 2026-10-02; the file here is
+complete).
+
+Two of them, GLib and GNU gettext's libintl, are licensed under the LGPL. Their
+complete source for the exact versions in each release (upstream source, patches and
+build recipe) is attached to that release on the
+[Releases page](https://github.com/kksimp/Mac.apk-Releases/releases), with
+`LGPL-SOURCE-README.txt` explaining how to use a modified build.
 
 ## Links
 
