@@ -37,9 +37,9 @@ Which Android apps run on Mac.apk, and how well. Updated 2026-10-01.
 | **Mindustry** | ✅ | Online multiplayer currently inop |
 | **Minecraft** | ✅ | Boots, renders and Xbox sign-in works. |
 | **Now in Android** | ✅ |  |
-| **Open Sudoku** | ❔ | Weird menu glitches and numbers cannot be inputted. Icon shows in Dock but not app drawer. |
+| **Open Sudoku** | ❔ |  |
 | **OpenGD** | ✅ |  |
-| **OpenTTD** | ✅ | Touch input seems inoperable but loads to main menu |
+| **OpenTTD** | ✅ |  |
 | **Organic Maps** | ✅ | Needs location permissions fixed |
 | **Pekka Kana 2** | ✅ |  |
 | **PianOli** | ✅ | Settings don't open |
