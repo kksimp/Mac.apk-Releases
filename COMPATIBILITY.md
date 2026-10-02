@@ -107,7 +107,7 @@ Measurements come from the automated test run: render verdict, colour count, and
 | **Calculator (OpenCalc)**<br><sub>3.2.0</sub> | `com.darkempire78.opencalculator`<br><sub>plain Android (Java/Kotlin) · Java only</sub> | ✅ | ✅ | 09-28: warm CONTENT (1,050 colours), render 1.8 s warm, 2.9 s cold. |
 | **Candy Crush Saga**<br><sub>1.323.0.1</sub> | `com.king.candycrushsaga`<br><sub>pure-Java/Compose · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm CONTENT (7,470 colours), render 2.1 s warm, 9.7 s cold. |
 | **Clock**<br><sub>2.31</sub> | `com.best.deskclock`<br><sub>plain Android (Java/Kotlin) · Java only</sub> | ✅ | ✅ | 09-28: warm SPARSE (645 colours), render 1.8 s warm, 3.2 s cold. |
-| **Crossy Road**<br><sub>7.11.1</sub> | `com.yodo1.crossyroad`<br><sub>Unity/il2cpp · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (23,736 colours), render 13.2 s warm. v1.0.1657: game clock fixed (Time.unscaledTime 2.19e6 s -> 65 s). Unity reads black to screen capture. |
+| **Crossy Road**<br><sub>7.13.0</sub> | `com.yodo1.crossyroad`<br><sub>Unity/il2cpp · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (23,736 colours), render 13.2 s warm. v1.0.1657: game clock fixed (Time.unscaledTime 2.19e6 s -> 65 s). Unity reads black to screen capture. |
 | **Dumb Ways to Die**<br><sub>36.1.22</sub> | `com.popreach.dumbways`<br><sub>Unity/il2cpp · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm CONTENT (3,969 colours), render 2.8 s warm, 7.2 s cold. |
 | **Duolingo**<br><sub>6.82.3</sub> | `com.duolingo`<br><sub>Unity/il2cpp · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm CONTENT (1,908 colours), render 5.7 s warm, 18.5 s cold. |
 | **Efteling**<br><sub>5.24.0</sub> | `nl.efteling.android` | ✅ | ✅ | 09-28: warm none (0 colours). |
@@ -126,7 +126,7 @@ Measurements come from the automated test run: render verdict, colour count, and
 | **Jetpack 2**<br><sub>0.1.60</sub> | `com.halfbrick.superjetpack`<br><sub>plain Android (Java/Kotlin) · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm CONTENT (32,223 colours), render 7.9 s warm, 12.4 s cold. |
 | **Jetpack Joyride**<br><sub>1.3.5</sub> | `com.halfbrick.jetpackjoyride`<br><sub>plain Android (Java/Kotlin) · ARM32 (arm32rc)</sub> | ✅ | ✅ | 09-28: warm RICH (30,653 colours), render 9.0 s warm, 10.8 s cold |
 | **Mastodon**<br><sub>2.13.1</sub> | `org.joinmastodon.android`<br><sub>plain Android (Java/Kotlin) · Java only</sub> | ✅ | ✅ | 09-28: warm RICH (23,339 colours), render 1.7 s warm, 3.9 s cold. |
-| **Mindustry**<br><sub>8-fdroid-158</sub> | `io.anuke.mindustry`<br><sub>plain Android (Java/Kotlin) · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (9,325 colours), render 6.9 s warm, 3.7 s cold. |
+| **Mindustry**<br><sub>8-fdroid-160.5</sub> | `io.anuke.mindustry`<br><sub>plain Android (Java/Kotlin) · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (9,325 colours), render 6.9 s warm, 3.7 s cold. |
 | **Minecraft**<br><sub>1.26.45.1</sub> | `com.mojang.minecraftpe`<br><sub>AGDK+bgfx (RenderDragon) · Stage-6 arm64</sub> | ✅ | ✅ | Boots, renders and Xbox sign-in works (v1.0.1569/1572); RICH 20,621 on the installed app at v1.0.1656. |
 | **NewPipe**<br><sub>0.29.0</sub> | `org.schabi.newpipe`<br><sub>pure-Java/Compose · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (222,746 colours), render 3.6 s warm, 9.0 s cold. |
 | **Now in Android**<br><sub>0.1.2</sub> | `com.google.samples.apps.nowinandroid.demo.debug`<br><sub>pure-Java/Compose · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm CONTENT (5,720 colours), render 3.7 s warm, 13.0 s cold. |
@@ -145,7 +145,7 @@ Measurements come from the automated test run: render verdict, colour count, and
 | **Simple Solitaire Collection**<br><sub>3.13</sub> | `de.tobiasbielefeld.solitaire`<br><sub>plain Android (Java/Kotlin) · Java only</sub> | ✅ | ✅ | 09-28: warm RICH (56,166 colours), render 2.1 s warm, 3.0 s cold. |
 | **Smash Hit**<br><sub>1.5.14</sub> | `com.mediocre.smashhit`<br><sub>plain Android (Java/Kotlin) · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (276,922 colours), render 7.1 s warm, 8.3 s cold. |
 | **SolitaireCG**<br><sub>4.1</sub> | `net.sourceforge.solitaire_cg`<br><sub>plain Android (Java/Kotlin) · Java only</sub> | ✅ | ✅ | 09-28: warm BLANK (170 colours). |
-| **Subway Surfers**<br><sub>3.62.0</sub> | `com.kiloo.subwaysurf`<br><sub>Unity/il2cpp · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (530,442 colours), render 4.1 s warm. |
+| **Subway Surfers**<br><sub>3.69.1</sub> | `com.kiloo.subwaysurf`<br><sub>Unity/il2cpp · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (530,442 colours), render 4.1 s warm. |
 | **Super Retro Mega Wars**<br><sub>0.32.5</sub> | `com.serwylo.retrowars`<br><sub>libGDX/arc · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm CONTENT (183,837 colours), render 6.5 s warm, 6.3 s cold. |
 | **Telegram**<br><sub>12.9.1</sub> | `org.telegram.messenger.web`<br><sub>plain Android (Java/Kotlin) · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm SPARSE (1,734 colours), render 2.9 s warm, 14.2 s cold. |
 | **Temple Run 2**<br><sub>1.133.0</sub> | `com.imangi.templerun2`<br><sub>Unity/il2cpp · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm RICH (14,377 colours), render 7.4 s warm, 13.4 s cold. |
@@ -158,5 +158,16 @@ Measurements come from the automated test run: render verdict, colour count, and
 | **Wikipedia**<br><sub>50591-r-2026-06-02</sub> | `org.wikipedia`<br><sub>pure-Java/Compose · Stage-6 arm64</sub> | ✅ | ✅ | 09-28: warm CONTENT (278,222 colours), render 3.5 s warm, 7.5 s cold. |
 
 </details>
+
+<details>
+<summary><b>Earlier versions tested</b> (3)</summary>
+
+Each app above shows its newest tested version. These are the versions tested before it, and how they ran.
+
+| App | Version | Icon | Sound | Renders | Playable | Replaced |
+|:----|:--------|:----:|:-----:|:-------:|:--------:|:---------|
+| **Crossy Road** | 7.11.1 | ✅ | ✅ | ✅ | ✅ | 2026-10-02 |
+| **Mindustry** | 8-fdroid-158 | ✅ | ✅ | ✅ | ✅ | 2026-10-02 |
+| **Subway Surfers** | 3.62.0 | ✅ | ✅ | ✅ | ✅ | 2026-10-02 |
 
 <sub>Generated by websites/app-compat/index.html</sub>
