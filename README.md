@@ -21,7 +21,8 @@ and interesting enough to explore, and it improves with every build.
 Mac.apk runs Android apps directly on Apple Silicon. Apps launch as ordinary macOS
 processes, draw through the Mac's GPU, and execute on the CPU at native speed. They
 appear in your Dock, get their own windows, and behave like Mac apps because that
-is what they become.
+is what they become: each window has a [back button](#going-back) next to the traffic
+lights, and apps switch between [light and dark](#dark-mode) along with your Mac.
 
 There is no emulator here, and no virtual machine. Nothing boots Android in the
 background, there is no Linux kernel running underneath, and nothing is being
@@ -230,6 +231,23 @@ account is added yet, the app offers to add one.
 Click to tap, click and drag to swipe or drag. Two fingers on the trackpad act as two
 fingers on a phone screen: pinch to zoom, and apps that need a two-finger hold or gesture
 receive it. In text fields the Mac keyboard types as usual.
+
+### Going back
+
+Every app window has a back button (**‹**) in its title bar, right next to the red,
+yellow and green window buttons. It is Android's Back button: it goes back one screen,
+closes a menu or dialog, or does whatever the app itself does on Back (a game might open
+its pause menu). **Esc** and **Cmd+[** do the same. On an app's main screen, Back hides
+the app, the way an Android phone sends it to the background; click its icon in the Dock
+to bring it back where you left off.
+
+### Dark mode
+
+Apps follow your Mac's appearance, live. Switch macOS between Light and Dark (System
+Settings → Appearance, or Auto) while an app is open and most apps change with it right
+away, just as they do when you flip dark mode on an Android phone. Apps that have their
+own theme setting keep using that. To keep apps in light mode whatever macOS uses, set
+`MACAPK_FOLLOW_SYSTEM_APPEARANCE=0` (see [Advanced: flags and settings](#advanced-flags-and-settings)).
 
 ### Copy and paste
 
