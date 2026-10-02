@@ -289,6 +289,9 @@ remove things, and it names exactly what is about to go before it does anything.
 
 Mac.apk is in alpha, and honesty serves you better than a marketing number here.
 
+**Per-app results:** [COMPATIBILITY.md](COMPATIBILITY.md) lists every app tested by hand (64 so far), with
+its engine, whether it renders, plays and has sound, and what is still wrong.
+
 - **Many apps run well.** Utilities, readers, tools, open-source apps and a good
   number of games run properly, including apps with substantial native code.
 - **Some apps run partially.** They start and are usable, but something is wrong:
