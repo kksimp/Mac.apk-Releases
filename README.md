@@ -140,7 +140,11 @@ Drag an APK onto the Mac.apk window. Same result, useful when Mac.apk is already
   **Controls** menu and choose **Arrow Keys as D-pad**, then move with the arrow keys.
   The on-screen joystick (click and drag) works either way.
 - **Rocket League Sideswipe** is slow to start (macOS shows it as Not Responding
-  until its first frame), and in a match the ball shows as a pink shape.
+  until its first frame), and in a match the ball shows as a pink shape. Sign in with
+  Epic Games fails when Safari hands you back to the game; play offline for now.
+- **Geometry Dash Meltdown:** its full-screen ads play, but the game still breaks
+  after one.
+- **Asphalt Legends** starts but its screen stays black.
 - **Fortnite** does not run: it stops at Epic's anti-cheat, which Mac.apk does not
   and will not get around.
 - Some apps still run only partially or not at all; see the
