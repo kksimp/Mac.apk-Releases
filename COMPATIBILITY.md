@@ -1,8 +1,8 @@
 # Mac.apk App Compatibility
 
-Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
+Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-03.
 
-**63 apps tested:** ✅ 48 work · ⚠️ 10 partly work · ❌ 5 don't work yet
+**64 apps tested:** ✅ 48 work · ⚠️ 12 partly work · ❌ 4 don't work yet
 
 **Legend:** ✅ yes · ⚠️ partly · ❌ not yet · ❔ not tested yet. **Works** means you can use the app or play the game; **Sound** means its audio plays. An app tested at more than one version has a row for each, newest first.
 
@@ -11,12 +11,13 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 | **1010! Klooni** | 0.8.6 | ✅ | ✅ |  |
 | **Aegis** | 3.4.2 | ⚠️ | ❔ | Camera access does not work. Photo access can pick a file but not process it. |
 | **Alto's Adventure** | 1.8.27 | ✅ | ✅ |  |
-| **Among Us** | 2026.6.5 | ✅ | ✅ | Keyboard does not respond in v1.0.1666; move with the on-screen joystick (click and drag). |
+| **Among Us** | 2026.6.5 | ✅ | ✅ | Turn on Controls → Arrow Keys as D-pad to move with the arrow keys; the on-screen joystick (click and drag) also works. |
 | **Anarch RE** | 4 | ✅ | ✅ |  |
-| **AnkiDroid** | 2.24.0 | ❌ | ❔ | Needs permissions fixed |
+| **AnkiDroid** | 2.24.0 | ⚠️ | ❔ | Draws its screen: ⚠️. Asks for file access correctly; some screens draw with visual glitches. |
 | **AntennaPod** | 3.11.4 | ✅ | ✅ | Now playing does not render right. |
 | **Anuto TD** | 0.13 | ✅ | ✅ |  |
 | **Apple Flinger** | 1.6.1 | ✅ | ✅ |  |
+| **Asphalt Legends** | 52.1.2a | ❌ | ❔ | Draws its screen: ❌. Boots but the screen stays black. |
 | **Aurora Store** | 4.8.4 | ✅ | ❔ |  |
 | **BobBall** | 1.17 | ✅ | ✅ |  |
 | **Calculator (Google)** | 9.1 (886477075) | ✅ | ❔ |  |
@@ -35,7 +36,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 | **Fruit Ninja** | 3.95.5 | ✅ | ✅ |  |
 | **Gallery** | 1.13.1 | ❌ | ❔ | Needs file permissions fixed. |
 | **Geometry Dash Lite** | 2.2.11 | ✅ | ✅ |  |
-| **Geometry Dash Meltdown** | 2.2.147 | ✅ | ✅ |  |
+| **Geometry Dash Meltdown** | 2.2.147 | ⚠️ | ✅ | Full-screen ads now play, but they still break the game afterwards. |
 | **Hill Climb Racing** | 1.68.1 | ✅ | ✅ |  |
 | **Hill Climb Racing** | 1.43.0 | ✅ | ✅ |  |
 | **Hill Climb Racing** | 1.8.1 | ✅ | ✅ |  |
@@ -57,7 +58,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 | **Plague Inc.** | 1.24.4 | ⚠️ | ⚠️ | INSANE VOLUME, be WARNED. News doesn't work |
 | **Puzzles** | 2025-09-12-1919-23762278-fdroid | ✅ | ❔ |  |
 | **Reddit** | 2026.21.0 | ⚠️ | ✅ | Cannot log in via Google. Needs zoomed out when in full screen. Scrolling is odd. |
-| **Rocket League Sideswipe** | 1.12.5 | ✅ | ✅ | Needs the next Mac.apk release (not in v1.0.1666). Slow to start: macOS shows it as Not Responding until the first frame, then it renders and plays with sound. |
+| **Rocket League Sideswipe** | 1.12.5 | ✅ | ✅ | Works with a game controller. Slow to start: macOS shows it as Not Responding until the first frame. Sign in with Epic Games fails when Safari returns to the app; play offline instead. The ball shows as a pink shape. |
 | **Rocks 'n' Diamonds** | 4.2.2.0 | ✅ | ✅ |  |
 | **Shattered Pixel Dungeon** | 3.3.8 | ✅ | ✅ |  |
 | **Signal** | 8.20.4 | ✅ | ❔ |  |
@@ -74,5 +75,5 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-02.
 | **Unciv** | 4.20.10 | ✅ | ✅ |  |
 | **Unit Converter Ultimate** | 5.7.3 | ✅ | ❔ |  |
 | **Vector Pinball** | 1.15.2 | ✅ | ✅ |  |
-| **VLC** | 3.7.1 | ❌ | ❔ | Crashes when attempting to grant permissions. |
+| **VLC** | 3.7.1 | ✅ | ❔ | Runs and can access your files after you grant All file access. |
 | **Wikipedia** | 50591-r-2026-06-02 | ✅ | ❔ | Night mode bugs. |
