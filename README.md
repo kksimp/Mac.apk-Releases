@@ -37,7 +37,7 @@ to manage, no separate desktop to switch into.
 
 | | |
 |---|---|
-| **macOS 26.4 (Tahoe) or newer** | Required, not recommended |
+| **macOS 26.4 (Tahoe) or newer** | Required, not recommended. macOS 27 works from v1.0.1702 |
 | **Apple Silicon** | M1, M2, M3, M4 or newer |
 | **Disk** | ~280 MB for Mac.apk and its runtime. Apps need more than their APK. See below |
 
@@ -134,7 +134,10 @@ Android installs them.
 
 Drag an APK onto the Mac.apk window. Same result, useful when Mac.apk is already open.
 
-### Known issues in v1.0.1700
+### Known issues in v1.0.1702
+
+- **On macOS 27, update to v1.0.1702.** Earlier versions freeze Unity games
+  (Subway Surfers, Crossy Road and others) on an empty window at startup on macOS 27.
 
 - **Among Us** moves with the keyboard only when you turn it on: open the app's
   **Controls** menu and choose **Arrow Keys as D-pad**, then move with the arrow keys.
@@ -366,7 +369,7 @@ its engine, whether it renders, plays and has sound, and what is still wrong.
   not claim to be.
 
 Known problems in specific apps in this release are listed under
-[Known issues in v1.0.1700](#known-issues-in-v101700).
+[Known issues in v1.0.1702](#known-issues-in-v101702).
 
 The compatible set grows with every release. If an app you care about does not work,
 tell us. That is genuinely how the list gets shorter.
@@ -439,7 +442,7 @@ used when an app does not ship that SDK itself, answers every ad request with
 **no fill**, exactly as a real device with no reachable ad configuration does. An ad
 SDK that an app ships inside its own code runs as part of that app, though, so some
 free games do show their full-screen ads on Mac.apk (see
-[Known issues in v1.0.1700](#known-issues-in-v101700)). Apps keep running either way.
+[Known issues in v1.0.1702](#known-issues-in-v101702)). Apps keep running either way.
 
 In-app purchases are blocked for the same structural reasons. Google Play Billing
 requires a connection to Google Play Services and an attested device, neither of which
