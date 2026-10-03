@@ -134,20 +134,18 @@ Android installs them.
 
 Drag an APK onto the Mac.apk window. Same result, useful when Mac.apk is already open.
 
-### Known issues in v1.0.1666
+### Known issues in v1.0.1699
 
-- **Installing an `.apkm` bundle (APKMirror) straight from a USB drive or other slow
-  disk can fail, with nothing installed.** Mac.apk gives up reading the app's name
-  after 5 seconds, and after that one failure every other install in the same Mac.apk
-  session also fails until you quit Mac.apk. Ordinary `.apk` files from the same drive
-  installed normally in testing. **Workaround:** copy the `.apkm` to your Mac's own
-  disk first, then quit and reopen Mac.apk and install it again. Fixed in the next
-  version.
-- **Among Us** does not respond to the keyboard in this version; move with the
-  on-screen joystick (click and drag). A fix is planned for the next version.
-- **Some full-screen ads** (seen with AppLovin in Geometry Dash Meltdown) show an empty
-  page with no close button and ignore Back; quit the app (Cmd+Q) to get out of one.
-- **VLC** still does not run: it crashes once its first-run setup is done.
+- **Among Us** moves with the keyboard only when you turn it on: open the app's
+  **Controls** menu and choose **Arrow Keys as D-pad**, then move with the arrow keys.
+  The on-screen joystick (click and drag) works either way.
+- **Rocket League Sideswipe** is slow to start (macOS shows it as Not Responding
+  until its first frame), and in a match a black band covers the far side of the field
+  and the ball shows as a pink shape. Menus, touch and sound work.
+- **Fortnite** does not run: it stops at Epic's anti-cheat, which Mac.apk does not
+  and will not get around.
+- Some apps still run only partially or not at all; see the
+  [compatibility list](COMPATIBILITY.md).
 
 ### Install from an app store, inside Mac.apk
 
@@ -231,6 +229,23 @@ account is added yet, the app offers to add one.
 Click to tap, click and drag to swipe or drag. Two fingers on the trackpad act as two
 fingers on a phone screen: pinch to zoom, and apps that need a two-finger hold or gesture
 receive it. In text fields the Mac keyboard types as usual.
+
+### Game controls
+
+Each app window has a **Controls** menu in the menu bar. It picks one input mode at a
+time for that app, and Mac.apk remembers the choice per app:
+
+- **None**: the keyboard reaches the app as a keyboard (the default).
+- **Tilt Control**: the arrow keys tilt the "phone". Left and Right roll it, Up and
+  Down pitch it, and it springs back level when you let go. For games you steer by
+  tilting.
+- **Arrow Keys as D-pad**: the arrow keys become the d-pad of a game controller. For
+  games that move with a controller but not a keyboard (Among Us, for example).
+- **Key-binding profiles**, when an app has one: keys mapped to taps on the screen.
+
+**Game controllers** connected to your Mac (Xbox, PlayStation, and other controllers
+macOS supports) show up in Android apps as game controllers, buttons and sticks
+included. Vibration is not supported yet.
 
 ### Going back
 
@@ -348,7 +363,7 @@ its engine, whether it renders, plays and has sound, and what is still wrong.
   not claim to be.
 
 Known problems in specific apps in this release are listed under
-[Known issues in v1.0.1666](#known-issues-in-v101666).
+[Known issues in v1.0.1699](#known-issues-in-v101699).
 
 The compatible set grows with every release. If an app you care about does not work,
 tell us. That is genuinely how the list gets shorter.
@@ -421,7 +436,7 @@ used when an app does not ship that SDK itself, answers every ad request with
 **no fill**, exactly as a real device with no reachable ad configuration does. An ad
 SDK that an app ships inside its own code runs as part of that app, though, so some
 free games do show their full-screen ads on Mac.apk (see
-[Known issues in v1.0.1666](#known-issues-in-v101666)). Apps keep running either way.
+[Known issues in v1.0.1699](#known-issues-in-v101699)). Apps keep running either way.
 
 In-app purchases are blocked for the same structural reasons. Google Play Billing
 requires a connection to Google Play Services and an attested device, neither of which
@@ -503,9 +518,7 @@ Capstone, libpng, libvpx, stb_vorbis, Bouncy Castle, a JRE built from OpenJDK to
 with the libraries its font and image code uses, such as FreeType, HarfBuzz and GLib,
 and the Android platform resources built from AOSP source). Each is used under its own
 licence; the full notices are in [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt),
-and a copy ships inside the app at `Contents/Resources/THIRD_PARTY_NOTICES.txt` (the
-copy inside v1.0.1666 predates the libraries added on 2026-10-02; the file here is
-complete).
+and a copy ships inside the app at `Contents/Resources/THIRD_PARTY_NOTICES.txt`.
 
 Two of them, GLib and GNU gettext's libintl, are licensed under the LGPL. Their
 complete source for the exact versions in each release (upstream source, patches and
