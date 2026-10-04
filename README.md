@@ -22,7 +22,8 @@ Mac.apk runs Android apps directly on Apple Silicon. Apps launch as ordinary mac
 processes, draw through the Mac's GPU, and execute on the CPU at native speed. They
 appear in your Dock, get their own windows, and behave like Mac apps because that
 is what they become: each window has a [back button](#going-back) next to the traffic
-lights, and apps switch between [light and dark](#dark-mode) along with your Mac.
+lights, windows [resize and rotate live](#resizing-and-rotating) like any Mac window,
+and apps switch between [light and dark](#dark-mode) along with your Mac.
 
 There is no emulator here, and no virtual machine. Nothing boots Android in the
 background, there is no Linux kernel running underneath, and nothing is being
@@ -104,6 +105,13 @@ choice for you rather than letting an app take it silently. Approve it, and from
 then on `.apk` files, plus the `.apkm`, `.xapk`, `.apks` and `.apkx` split-bundle
 formats, belong to Mac.apk.
 
+If `.apk` files still open in another app afterwards (an archive tool such as Keka,
+for example), that is a known bug in v1.0.1702 on Macs where another app has also
+claimed the `.apk` file type, and it is being fixed
+([issue #1](../../issues/1)). Until then, select any `.apk` in Finder, press **⌘I**,
+choose **Mac.apk** under **Open with**, and click **Change All…**. Repeat for the
+bundle formats you use.
+
 **You are done.** From here, installing an Android app is a double-click.
 
 ### Updating Mac.apk
@@ -138,6 +146,9 @@ Drag an APK onto the Mac.apk window. Same result, useful when Mac.apk is already
 
 - **On macOS 27, update to v1.0.1702.** Earlier versions freeze Unity games
   (Subway Surfers, Crossy Road and others) on an empty window at startup on macOS 27.
+- **Make Default** in Settings can leave `.apk` files opening in another app (such as
+  Keka) when that app has also claimed the file type. The workaround is under
+  [step 4 of Installation](#4-make-macapk-the-default-for-apk-files).
 
 - **Among Us** moves with the keyboard only when you turn it on: open the app's
   **Controls** menu and choose **Arrow Keys as D-pad**, then move with the arrow keys.
@@ -261,6 +272,16 @@ closes a menu or dialog, or does whatever the app itself does on Back (a game mi
 its pause menu). **Esc** and **Cmd+[** do the same. On an app's main screen, Back hides
 the app, the way an Android phone sends it to the background; click its icon in the Dock
 to bring it back where you left off.
+
+### Resizing and rotating
+
+App windows are ordinary Mac windows. Drag any edge or corner to resize one, tile it
+with macOS window tiling, or click the green button for full screen, and the app
+re-lays itself out for the new size, the way an Android app does when a tablet or a
+foldable changes shape. Most apps keep their proportions while you drag. **View →
+Rotate** (**⌘R**) turns the window between portrait and landscape at any time. There
+is no need to pick a screen size first: an installed app opens at a size that suits
+your display and the app's own orientation, and you take it from there.
 
 ### Dark mode
 
