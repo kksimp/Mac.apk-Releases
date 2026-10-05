@@ -1,8 +1,8 @@
 # Mac.apk App Compatibility
 
-Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-03.
+Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-05.
 
-**64 apps tested:** ✅ 48 work · ⚠️ 12 partly work · ❌ 4 don't work yet
+**64 apps tested:** ✅ 49 work · ⚠️ 12 partly work · ❌ 3 don't work yet
 
 **Legend:** ✅ yes · ⚠️ partly · ❌ not yet · ❔ not tested yet. **Works** means you can use the app or play the game; **Sound** means its audio plays. An app tested at more than one version has a row for each, newest first.
 
@@ -17,7 +17,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-03.
 | **AntennaPod** | 3.11.4 | ✅ | ✅ | Now playing does not render right. |
 | **Anuto TD** | 0.13 | ✅ | ✅ |  |
 | **Apple Flinger** | 1.6.1 | ✅ | ✅ |  |
-| **Asphalt Legends** | 52.1.2a | ❌ | ❔ | Draws its screen: ❌. Boots but the screen stays black. |
+| **Asphalt Legends** | 52.1.2a | ✅ | ❔ | Playable on Vulkan; Tilt Control steers. Raise graphics quality in its settings for a sharper picture. |
 | **Aurora Store** | 4.8.4 | ✅ | ❔ |  |
 | **BobBall** | 1.17 | ✅ | ✅ |  |
 | **Calculator (Google)** | 9.1 (886477075) | ✅ | ❔ |  |
