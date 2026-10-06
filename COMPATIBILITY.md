@@ -1,8 +1,8 @@
 # Mac.apk App Compatibility
 
-Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-05.
+Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-06.
 
-**64 apps tested:** ✅ 49 work · ⚠️ 12 partly work · ❌ 3 don't work yet
+**65 apps tested:** ✅ 51 work · ⚠️ 11 partly work · ❌ 3 don't work yet
 
 **Legend:** ✅ yes · ⚠️ partly · ❌ not yet · ❔ not tested yet. **Works** means you can use the app or play the game; **Sound** means its audio plays. An app tested at more than one version has a row for each, newest first.
 
@@ -44,6 +44,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-05.
 | **Jetpack 2** | 0.1.60 | ❌ | ❔ | Stuck loading at 59% |
 | **Jetpack Joyride** | 1.3.5 | ✅ | ✅ |  |
 | **Mastodon** | 2.13.1 | ⚠️ | ✅ | Only shows one post |
+| **mGrađani** | 1.0.18 | ✅ | ❔ | Icon: ❔. NIAS login page works since Mac.apk v1.0.1723 (it was blank before). |
 | **Mindustry** | 8-fdroid-160.5 | ✅ | ✅ | Online multiplayer currently inop |
 | **Mindustry** | 8-fdroid-158 | ✅ | ✅ |  |
 | **Minecraft** | 1.26.45.1 | ✅ | ✅ | Boots, renders and Xbox sign-in works. |
@@ -69,7 +70,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-05.
 | **Subway Surfers** | 3.62.0 | ✅ | ✅ |  |
 | **Super Retro Mega Wars** | 0.32.5 | ✅ | ✅ |  |
 | **Telegram** | 12.9.1 | ✅ | ❔ |  |
-| **Temple Run 2** | 1.133.0 | ⚠️ | ✅ | Playable but crashes |
+| **Temple Run 2** | 1.133.0 | ✅ | ✅ | Loading crash fixed in v1.0.1726. |
 | **Thunderbird** | 21.0 | ⚠️ | ❔ | Sign in with Google works but log in to Thunderbird fails. |
 | **TIC-80** | 1.01.00 | ✅ | ✅ |  |
 | **Unciv** | 4.20.10 | ✅ | ✅ |  |
