@@ -33,10 +33,12 @@ on top of macOS directly. [How it works →](https://github.com/kksimp/Mac.apk-R
 
 | | |
 |---|---|
-| **Getting started** | [Installation](https://github.com/kksimp/Mac.apk-Releases/wiki/Installation) · [Installing apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Installing-Apps) (including F-Droid and Aurora Store) · [Using apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Using-Apps) · [Managing apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Managing-Apps) |
-| **Reference** | [Google accounts and Play Services](https://github.com/kksimp/Mac.apk-Releases/wiki/Google-Accounts-and-Play-Services) · [Known issues](https://github.com/kksimp/Mac.apk-Releases/wiki/Known-Issues) · [Troubleshooting](https://github.com/kksimp/Mac.apk-Releases/wiki/Troubleshooting) · [Reporting problems](https://github.com/kksimp/Mac.apk-Releases/wiki/Reporting-Problems) |
+| **Getting started** | [Installation](https://github.com/kksimp/Mac.apk-Releases/wiki/Installation) |
+| **Installing apps** | [Installing apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Installing-Apps) · [App stores](https://github.com/kksimp/Mac.apk-Releases/wiki/App-Stores) · [How apps are installed](https://github.com/kksimp/Mac.apk-Releases/wiki/How-Apps-Are-Installed) · [Managing apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Managing-Apps) |
+| **Using apps** | [Controls and input](https://github.com/kksimp/Mac.apk-Releases/wiki/Controls-and-Input) · [Windows and appearance](https://github.com/kksimp/Mac.apk-Releases/wiki/Windows-and-Appearance) · [Files and privacy](https://github.com/kksimp/Mac.apk-Releases/wiki/Files-and-Privacy) · [Google accounts and Play Services](https://github.com/kksimp/Mac.apk-Releases/wiki/Google-Accounts-and-Play-Services) |
 | **Flags and advanced settings** | [Flags](https://github.com/kksimp/Mac.apk-Releases/wiki/Flags) · [Flags reference](https://github.com/kksimp/Mac.apk-Releases/wiki/Flags-Reference) · [Developer menu](https://github.com/kksimp/Mac.apk-Releases/wiki/Developer-Menu) |
-| **Behind the scenes** | [How Mac.apk works](https://github.com/kksimp/Mac.apk-Releases/wiki/How-Mac.apk-Works) · [Design decisions](https://github.com/kksimp/Mac.apk-Releases/wiki/Design-Decisions) · [For developers and publishers](https://github.com/kksimp/Mac.apk-Releases/wiki/For-Developers-and-Publishers) |
+| **Help** | [Known issues](https://github.com/kksimp/Mac.apk-Releases/wiki/Known-Issues) · [Troubleshooting](https://github.com/kksimp/Mac.apk-Releases/wiki/Troubleshooting) · [Reporting problems](https://github.com/kksimp/Mac.apk-Releases/wiki/Reporting-Problems) |
+| **About Mac.apk** | [How Mac.apk works](https://github.com/kksimp/Mac.apk-Releases/wiki/How-Mac.apk-Works) · [Design decisions](https://github.com/kksimp/Mac.apk-Releases/wiki/Design-Decisions) · [For developers and publishers](https://github.com/kksimp/Mac.apk-Releases/wiki/For-Developers-and-Publishers) |
 
 ## System requirements
 
@@ -60,7 +62,7 @@ on top of macOS directly. [How it works →](https://github.com/kksimp/Mac.apk-R
 **The first launch of any app is slow** (up to a minute for a large one) while
 Mac.apk prepares it. Later launches are fast. Full details, updating, and the app
 stores are in the [Installation](https://github.com/kksimp/Mac.apk-Releases/wiki/Installation) and
-[Installing apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Installing-Apps) pages.
+[App stores](https://github.com/kksimp/Mac.apk-Releases/wiki/App-Stores) pages.
 
 > [!WARNING]
 > An Android app's saved data lives inside its own `.app`. Dragging the app to the
