@@ -59,7 +59,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-06.
 | **Plague Inc.** | 1.24.4 | ⚠️ | ⚠️ | INSANE VOLUME, be WARNED. News doesn't work |
 | **Puzzles** | 2025-09-12-1919-23762278-fdroid | ✅ | ❔ |  |
 | **Reddit** | 2026.21.0 | ⚠️ | ✅ | Cannot log in via Google. Needs zoomed out when in full screen. Scrolling is odd. |
-| **Rocket League Sideswipe** | 1.12.5 | ✅ | ✅ | Works with a game controller. Slow to start: macOS shows it as Not Responding until the first frame. Sign in with Epic Games fails when Safari returns to the app; play offline instead. The ball shows as a pink shape. |
+| **Rocket League Sideswipe** | 1.12.5 | ✅ | ✅ | Works with a game controller. Sign in with Epic Games and online matches work. The ball shows as a pink shape. |
 | **Rocks 'n' Diamonds** | 4.2.2.0 | ✅ | ✅ |  |
 | **Shattered Pixel Dungeon** | 3.3.8 | ✅ | ✅ |  |
 | **Signal** | 8.20.4 | ✅ | ❔ |  |

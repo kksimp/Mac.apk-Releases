@@ -105,12 +105,12 @@ choice for you rather than letting an app take it silently. Approve it, and from
 then on `.apk` files, plus the `.apkm`, `.xapk`, `.apks` and `.apkx` split-bundle
 formats, belong to Mac.apk.
 
-If `.apk` files still open in another app afterwards (an archive tool such as Keka,
-for example), that is a known bug in v1.0.1702 on Macs where another app has also
-claimed the `.apk` file type, and it is being fixed
-([issue #1](../../issues/1)). Until then, select any `.apk` in Finder, press **⌘I**,
-choose **Mac.apk** under **Open with**, and click **Change All…**. Repeat for the
-bundle formats you use.
+The **File types** row then shows a green check once Mac.apk opens all five
+formats. This also works on Macs where another app (an archive tool such as Keka,
+for example) has claimed the `.apk` file type too. If `.apk` files still open in
+another app, select any `.apk` in Finder, press **⌘I**, choose **Mac.apk** under
+**Open with**, and click **Change All…**, and please tell us in
+[issue #1](../../issues/1).
 
 **You are done.** From here, installing an Android app is a double-click.
 
@@ -142,23 +142,20 @@ Android installs them.
 
 Drag an APK onto the Mac.apk window. Same result, useful when Mac.apk is already open.
 
-### Known issues in v1.0.1702
+### Known issues in v1.0.1732
 
-- **On macOS 27, update to v1.0.1702.** Earlier versions freeze Unity games
+- **On macOS 27, use v1.0.1702 or later.** Earlier versions freeze Unity games
   (Subway Surfers, Crossy Road and others) on an empty window at startup on macOS 27.
-- **Make Default** in Settings can leave `.apk` files opening in another app (such as
-  Keka) when that app has also claimed the file type. The workaround is under
-  [step 4 of Installation](#4-make-macapk-the-default-for-apk-files).
-
 - **Among Us** moves with the keyboard only when you turn it on: open the app's
   **Controls** menu and choose **Arrow Keys as D-pad**, then move with the arrow keys.
   The on-screen joystick (click and drag) works either way.
-- **Rocket League Sideswipe** is slow to start (macOS shows it as Not Responding
-  until its first frame), and in a match the ball shows as a pink shape. Sign in with
-  Epic Games fails when Safari hands you back to the game; play offline for now.
+- **Rocket League Sideswipe:** in a match the ball shows as a pink shape. Sign in with
+  Epic Games and online matches work.
 - **Geometry Dash Meltdown:** its full-screen ads play, but the game still breaks
   after one.
-- **Asphalt Legends** starts but its screen stays black.
+- **Asphalt Legends** can sit on its logo for about half a minute the first time it
+  starts after macOS clears its graphics cache (after an update, for example). It is
+  preparing its shaders, not frozen.
 - **Fortnite** does not run: it stops at Epic's anti-cheat, which Mac.apk does not
   and will not get around.
 - Some apps still run only partially or not at all; see the
@@ -253,12 +250,16 @@ Each app window has a **Controls** menu in the menu bar. It picks one input mode
 time for that app, and Mac.apk remembers the choice per app:
 
 - **None**: the keyboard reaches the app as a keyboard (the default).
-- **Tilt Control**: the arrow keys tilt the "phone". Left and Right roll it, Up and
-  Down pitch it, and it springs back level when you let go. For games you steer by
-  tilting.
 - **Arrow Keys as D-pad**: the arrow keys become the d-pad of a game controller. For
   games that move with a controller but not a keyboard (Among Us, for example).
-- **Key-binding profiles**, when an app has one: keys mapped to taps on the screen.
+- **Tilt Control**: the arrow keys tilt the "phone". Left and Right roll it, Up and
+  Down pitch it, and it springs back level when you let go. For games you steer by
+  tilting (Temple Run 2 and Asphalt Legends, for example). While it is on, a game
+  controller's left stick tilts the phone too.
+- **Space Bar Taps Center**: the space bar taps the middle of the screen, and holding
+  it holds the tap. For one-button games.
+- **Key-binding profiles**, listed below the modes when an app has one: keys mapped to
+  taps on the screen.
 
 **Game controllers** connected to your Mac (Xbox, PlayStation, and other controllers
 macOS supports) show up in Android apps as game controllers, buttons and sticks
@@ -316,6 +317,14 @@ by every app the way a phone's storage is. Each app's private data stays inside 
 > app's Java code, but an app that ships native code can read the shared folders
 > without it; macOS's own prompts still protect Documents, Downloads, Desktop and your
 > Photos library.
+
+### Location
+
+Apps that use your location get the Mac's, from macOS Location Services. The first
+time an app asks, Mac.apk asks you whether that app may use your location, the way
+Android does, and macOS asks once whether **Mac.apk Location** may use Location
+Services. You can change the
+macOS side any time in System Settings → Privacy & Security → Location Services.
 
 ### Installs from inside an app ask for Touch ID
 
@@ -390,7 +399,7 @@ its engine, whether it renders, plays and has sound, and what is still wrong.
   not claim to be.
 
 Known problems in specific apps in this release are listed under
-[Known issues in v1.0.1702](#known-issues-in-v101702).
+[Known issues in v1.0.1732](#known-issues-in-v101732).
 
 The compatible set grows with every release. If an app you care about does not work,
 tell us. That is genuinely how the list gets shorter.
@@ -400,8 +409,7 @@ tell us. That is genuinely how the list gets shorter.
 ## Advanced: flags and settings
 
 Most people never need any of this. Every app installs and runs with the defaults, and
-the Mac.apk window's Settings cover the everyday choices (window size, orientation,
-logging). But the runtime also reads a set of environment variables and command-line
+the Mac.apk window's Settings cover the everyday choices (file types, logs). But the runtime also reads a set of environment variables and command-line
 flags, and a few of them are worth knowing when something needs adjusting or when you
 are gathering a bug report.
 
@@ -431,8 +439,8 @@ are gathering a bug report.
 | `MACAPK_FOLLOW_SYSTEM_APPEARANCE=0` | Forces light mode regardless of the Mac's appearance. Unset (the default) follows macOS's light/dark setting. |
 | `MACAPK_LOG_LEVEL=<2-7>` | The lowest severity the app's log keeps: 2 verbose, 3 debug, 4 info, 5 warnings, 6 errors; anything below it is dropped. Unset keeps everything, which is what a bug report wants (launches from the Mac.apk window use 4 unless verbose logging is on). A higher number makes the log quieter; `7` leaves it almost empty. |
 | `MACAPK_FULLSCREEN=1` (or `--fullscreen`) | Runs the app in a fullscreen window instead of a titled one. |
-| `--orientation auto\|portrait\|landscape` | Window orientation. `auto` reads the app's own declared orientation and otherwise picks portrait. Also a picker in Settings. |
-| `--width N --height N` | An explicit window size in pixels instead of the orientation's default. Also a picker in Settings. |
+| `--orientation auto\|portrait\|landscape` | Window orientation. `auto` reads the app's own declared orientation and otherwise picks portrait. Also a picker in Settings' developer section. |
+| `--width N --height N` | An explicit window size in pixels instead of the orientation's default. Also a picker in Settings' developer section. |
 | `MACAPK_ANDROID_ROOT=<dir>` (or `--android-root`) | Where the runtime keeps the Android filesystem it presents to the app. An installed app always uses the folder inside its own bundle; this matters only when running an APK directly. |
 | `MACAPK_FORCE_ABI=armeabi-v7a` (or `--force-abi`) | Runs the app's 32-bit ARM native code (through the recompiler) even when it ships 64-bit code. For diagnosis; also the "Force ARM32" toggle in the Mac.apk window's developer menu. |
 | `MACAPK_DEV_TRACE=1` (or `--dev-trace`) | Turns on the broad diagnostic trace. Expect about one frame per second in a big game while it is on. Also the "Verbose trace" toggle in the developer menu. |
@@ -463,7 +471,7 @@ used when an app does not ship that SDK itself, answers every ad request with
 **no fill**, exactly as a real device with no reachable ad configuration does. An ad
 SDK that an app ships inside its own code runs as part of that app, though, so some
 free games do show their full-screen ads on Mac.apk (see
-[Known issues in v1.0.1702](#known-issues-in-v101702)). Apps keep running either way.
+[Known issues in v1.0.1732](#known-issues-in-v101732)). Apps keep running either way.
 
 In-app purchases are blocked for the same structural reasons. Google Play Billing
 requires a connection to Google Play Services and an attested device, neither of which
