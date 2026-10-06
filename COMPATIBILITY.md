@@ -70,7 +70,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-06.
 | **Subway Surfers** | 3.62.0 | ✅ | ✅ |  |
 | **Super Retro Mega Wars** | 0.32.5 | ✅ | ✅ |  |
 | **Telegram** | 12.9.1 | ✅ | ❔ |  |
-| **Temple Run 2** | 1.133.0 | ✅ | ✅ | Loading crash fixed in v1.0.1726. |
+| **Temple Run 2** | 1.133.0 | ✅ | ✅ | Loading crash fixed in v1.0.1726. Tilt Control steers the runner. |
 | **Thunderbird** | 21.0 | ⚠️ | ❔ | Sign in with Google works but log in to Thunderbird fails. |
 | **TIC-80** | 1.01.00 | ✅ | ✅ |  |
 | **Unciv** | 4.20.10 | ✅ | ✅ |  |
