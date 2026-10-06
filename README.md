@@ -4,7 +4,7 @@
 
 [![Latest release](https://img.shields.io/github/v/release/kksimp/Mac.apk-Releases?label=latest&color=6c5ce7)](../../releases/latest)
 [![License: Personal Use](https://img.shields.io/badge/license-Personal%20Use-blue)](LICENSE)
-[![Signed and notarized](https://img.shields.io/badge/signed-notarized%20by%20Apple-000000)](#installation)
+[![Signed and notarized](https://img.shields.io/badge/signed-notarized%20by%20Apple-000000)](https://github.com/kksimp/Mac.apk-Releases/wiki/Installation)
 
 ### 📱 [Which apps work? See the compatibility list →](COMPATIBILITY.md)
 
@@ -20,509 +20,70 @@ and interesting enough to explore, and it improves with every build.
 
 Mac.apk runs Android apps directly on Apple Silicon. Apps launch as ordinary macOS
 processes, draw through the Mac's GPU, and execute on the CPU at native speed. They
-appear in your Dock, get their own windows, and behave like Mac apps because that
-is what they become: each window has a [back button](#going-back) next to the traffic
-lights, windows [resize and rotate live](#resizing-and-rotating) like any Mac window,
-and apps switch between [light and dark](#dark-mode) along with your Mac.
+appear in your Dock, get their own windows with a back button next to the traffic
+lights, resize and rotate like any Mac window, and switch between light and dark
+along with your Mac.
 
 There is no emulator here, and no virtual machine. Nothing boots Android in the
-background, there is no Linux kernel running underneath, and nothing is being
-interpreted instruction-by-instruction. Mac.apk implements the Android application
-environment on top of macOS directly, so an Android app's code runs on your
-processor rather than on a simulated one.
+background, there is no Linux kernel running underneath, and nothing is interpreted
+instruction-by-instruction. Mac.apk implements the Android application environment
+on top of macOS directly. [How it works →](https://github.com/kksimp/Mac.apk-Releases/wiki/How-Mac.apk-Works)
 
-The practical consequence is speed and integration: no VM to start, no disk image
-to manage, no separate desktop to switch into.
+## 📖 [Read the wiki →](https://github.com/kksimp/Mac.apk-Releases/wiki)
+
+| | |
+|---|---|
+| **Getting started** | [Installation](https://github.com/kksimp/Mac.apk-Releases/wiki/Installation) · [Installing apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Installing-Apps) (including F-Droid and Aurora Store) · [Using apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Using-Apps) · [Managing apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Managing-Apps) |
+| **Reference** | [Google accounts and Play Services](https://github.com/kksimp/Mac.apk-Releases/wiki/Google-Accounts-and-Play-Services) · [Known issues](https://github.com/kksimp/Mac.apk-Releases/wiki/Known-Issues) · [Troubleshooting](https://github.com/kksimp/Mac.apk-Releases/wiki/Troubleshooting) · [Reporting problems](https://github.com/kksimp/Mac.apk-Releases/wiki/Reporting-Problems) |
+| **Flags and advanced settings** | [Flags](https://github.com/kksimp/Mac.apk-Releases/wiki/Flags) · [Flags reference](https://github.com/kksimp/Mac.apk-Releases/wiki/Flags-Reference) · [Developer menu](https://github.com/kksimp/Mac.apk-Releases/wiki/Developer-Menu) |
+| **Behind the scenes** | [How Mac.apk works](https://github.com/kksimp/Mac.apk-Releases/wiki/How-Mac.apk-Works) · [Design decisions](https://github.com/kksimp/Mac.apk-Releases/wiki/Design-Decisions) · [For developers and publishers](https://github.com/kksimp/Mac.apk-Releases/wiki/For-Developers-and-Publishers) |
 
 ## System requirements
 
 | | |
 |---|---|
-| **macOS 26.4 (Tahoe) or newer** | Required, not recommended. macOS 27 works from v1.0.1702 |
-| **Apple Silicon** | M1, M2, M3, M4 or newer |
-| **Disk** | ~280 MB for Mac.apk and its runtime. Apps need more than their APK. See below |
-
-**A note on disk space.** An installed Android app is laid out the way Android
-itself lays one out: the APK stays as the installed app, its native libraries are
-unpacked next to it, and its code is converted for the Mac the first time it runs
-and kept so later launches are fast. The result is that an installed app takes
-roughly one and a half to three times the size of its APK, and a large 3D game can
-sit a few hundred megabytes above its APK. If you are installing a lot of big
-games, budget accordingly. Uninstalling an app from the Mac.apk control panel
-reclaims all of it.
-
-**macOS 26.4 is a hard floor and Mac.apk will not work around it.** Running Android
-apps that contain native code requires a platform capability that Apple introduced
-in macOS 26.4. On earlier versions that capability simply does not exist, and native
-Android code would misbehave in ways that are silent and very difficult to diagnose:
-failures would be intermittent and misleading rather than obvious. Rather than ship
-that, Mac.apk checks for the capability at runtime and refuses to run native Android
-code without it.
-
-Intel Macs are not supported and will not be. Mac.apk runs Android's ARM code
-directly on your ARM processor, which is not something an Intel chip can do.
-
----
-
-## Installation
-
-Four steps, once. After that you can install Android apps by double-clicking them.
-
-### 1. Install Mac.apk
-
-Download the disk image from the [Releases page](../../releases/latest), open it,
-and drag **Mac.apk** into your **Applications** folder. The disk image gives you an
-Applications shortcut to drop it on.
-
-Mac.apk is signed with an Apple Developer ID and notarized by Apple, so it opens
-normally, with no right-click-to-open, no "unidentified developer" warning, and no
-trip to System Settings.
-
-### 2. Open Mac.apk
-
-Launch it from Applications. You will get the Mac.apk control panel: a window with a
-drop zone, your installed Android apps, and a **Runtime:** indicator in the top left.
-
-### 3. Install the runtime
-
-In the top left, next to **Runtime:**, click **Install**.
-
-This unpacks the Android runtime that your apps will actually execute. It is a
-one-time, per-user step, it does not need your password, and it takes a few seconds.
-The indicator will change to **Runtime: Installed**.
-
-If you skip this step, Mac.apk installs the runtime for you the first time you try to
-install an Android app. Doing it deliberately here just means you see it happen rather
-than wondering what the pause was.
-
-### 4. Make Mac.apk the default for APK files
-
-Open **Settings** (the gear icon at the top right of the control panel), find
-**File types**, and click **Make Default**.
-
-macOS will ask you to confirm. This is a system prompt, and macOS reserves that
-choice for you rather than letting an app take it silently. Approve it, and from
-then on `.apk` files, plus the `.apkm`, `.xapk`, `.apks` and `.apkx` split-bundle
-formats, belong to Mac.apk.
-
-The **File types** row then shows a green check once Mac.apk opens all five
-formats. This also works on Macs where another app (an archive tool such as Keka,
-for example) has claimed the `.apk` file type too. If `.apk` files still open in
-another app, select any `.apk` in Finder, press **⌘I**, choose **Mac.apk** under
-**Open with**, and click **Change All…**, and please tell us in
-[issue #1](../../issues/1).
-
-**You are done.** From here, installing an Android app is a double-click.
-
-### Updating Mac.apk
-
-Mac.apk does not update itself. When a newer release is out, download its disk
-image and drag the new Mac.apk over the old one in Applications. Your installed
-Android apps and their saved data are untouched, and they pick up the new runtime
-the next time they launch (that launch can be slow again while Mac.apk re-prepares
-the app for the new version).
-
----
-
-## Installing Android apps
-
-**The first launch of any app is slow.** Mac.apk prepares the app the first time you
-install or open it, which can take up to a minute for a large one. It is doing work,
-not hanging, and it happens once per app (and once more after a Mac.apk update), and
-later launches are fast. Please don't report the first launch as a freeze.
-
-### Double-click an APK
-
-Once step 4 is done, double-clicking any `.apk` in Finder hands it to Mac.apk, which
-walks you through installing it. Split bundles (`.apkm`, `.xapk`, `.apks` and
-`.apkx`) work the same way: their parts are installed together as one app, the way
-Android installs them.
-
-### Drag and drop
-
-Drag an APK onto the Mac.apk window. Same result, useful when Mac.apk is already open.
-
-### Known issues in v1.0.1732
-
-- **On macOS 27, use v1.0.1702 or later.** Earlier versions freeze Unity games
-  (Subway Surfers, Crossy Road and others) on an empty window at startup on macOS 27.
-- **Among Us** moves with the keyboard only when you turn it on: open the app's
-  **Controls** menu and choose **Arrow Keys as D-pad**, then move with the arrow keys.
-  The on-screen joystick (click and drag) works either way.
-- **Rocket League Sideswipe:** in a match the ball shows as a pink shape. Sign in with
-  Epic Games and online matches work.
-- **Geometry Dash Meltdown:** its full-screen ads play, but the game still breaks
-  after one.
-- **Asphalt Legends** can sit on its logo for about half a minute the first time it
-  starts after macOS clears its graphics cache (after an update, for example). It is
-  preparing its shaders, not frozen.
-- **Fortnite** does not run: it stops at Epic's anti-cheat, which Mac.apk does not
-  and will not get around.
-- Some apps still run only partially or not at all; see the
-  [compatibility list](COMPATIBILITY.md).
-
-### Install from an app store, inside Mac.apk
-
-This is the part people tend not to expect: **Android app stores run on Mac.apk, and
-they can install apps.** You do not have to find APK files yourself.
-
-#### F-Droid
-
-[F-Droid](https://f-droid.org) is the open-source Android app catalog. Install the
-F-Droid APK once, open it in Mac.apk, and browse and install from its whole catalog
-the way you would on a phone. Browsing, downloading and installing all work.
-
-#### Aurora Store
-
-[Aurora Store](https://auroraoss.com) is an open-source client for the Google Play
-catalog, the same apps you would find on a phone. It runs on Mac.apk and installs
-from that catalog, so between it and F-Droid most of what you would want is a search
-away rather than a file you have to go hunting for.
-
-It needs **one setup step** first, and it will not download anything until you do it:
-
-> [!IMPORTANT]
-> Aurora Store will not download anything until you give it a device profile. This is
-> a one-time setup step, inside Aurora itself.
-
-Mac.apk reports itself honestly: it tells apps it is a Mac.apk device, because
-pretending to be a specific certified Android handset is not something this project
-does. Google's servers, however, only serve app downloads to a device they recognise,
-so Aurora needs to be told which device to ask as. Aurora has this built in.
-
-1. Open **Aurora Store** in Mac.apk
-2. Tap **More** (top right of the catalogue), then **Spoof manager**, then **Device**
-3. Select **Pixel Tablet**
-4. Restart Aurora Store when it prompts you
-5. **Sign in again.** This step is required, not optional. The device profile is
-   sent to Google only at sign-in, so changing it without a fresh login silently
-   does nothing at all. Anonymous is the sign-in we test with; Aurora's own Google
-   sign-in screen works too if you would rather use your account.
-
-**Use the Pixel Tablet profile specifically.** Aurora bundles more than twenty, but
-Pixel Tablet is the one whose architecture matches Mac.apk exactly, so the app builds
-Google serves you are the ones that actually run here, rather than builds for a
-different kind of chip. It is also the profile we test against, and the first thing we
-will ask about if you report a problem with a store-installed app.
-
-This is a normal Aurora Store feature that Aurora ships for exactly this purpose, and
-it affects only which catalog Google shows you.
-
-### Signing in with Google
-
-The person icon at the top of the Mac.apk window opens **Accounts**. **Sign in with
-Google** there opens Google's own sign-in page, and the account is then available to
-the Android apps you run, the way an account added to a phone is. That is what lets
-an app you bought on Google Play check its licence, and what an app that asks for a
-Google account gets when it asks. It is optional; nothing else in Mac.apk needs it.
-
-Apps that sign you in through a web page (for example an email app's "Sign in with
-Google" button) open that page in your Mac's browser and
-return to the app when you finish, as they would on a phone.
-
-An app's own **"Continue with Google"** button uses the account you added in Accounts:
-you pick the account, and the app receives a sign-in made for that app alone. If no
-account is added yet, the app offers to add one.
-
-> **Disclaimer: outside the Mac.apk account, "Sign in with Google" does not work on
-> Mac.apk.** Some apps only offer Google sign-in when Google Play Services itself is
-> signed by Google. Mac.apk's Play Services is its own implementation and honestly is
-> not, and Mac.apk will never pretend otherwise. In those apps the Google button
-> does nothing or reports an error, exactly as it does on a phone without Google's Play
-> Services. Use the app's other sign-in options instead (email and password, a username,
-> or a browser-based option). **Reddit** is one of these: on Mac.apk, sign in to Reddit
-> with your email or username. (Reddit chooses its sign-in method from its own servers;
-> where it chooses Android's Credential Manager, the Mac.apk account works.)
-
-### Licensing
-
-**Licensing:** Mac.apk does not bypass app licensing. When an app checks its Google Play license, Mac.apk asks Google's servers using your own Google account and passes Google's signed answer back to the app unchanged. The app verifies Google's signature itself, so Mac.apk cannot fake a "licensed" result. If your account didn't buy the app, the check fails just as it would on a real android device. Mac.apk doesn't patch or crack apps.
-
-### Trackpad and keyboard
-
-Click to tap, click and drag to swipe or drag. Two fingers on the trackpad act as two
-fingers on a phone screen: pinch to zoom, and apps that need a two-finger hold or gesture
-receive it. In text fields the Mac keyboard types as usual.
-
-### Game controls
-
-Each app window has a **Controls** menu in the menu bar. It picks one input mode at a
-time for that app, and Mac.apk remembers the choice per app:
-
-- **None**: the keyboard reaches the app as a keyboard (the default).
-- **Arrow Keys as D-pad**: the arrow keys become the d-pad of a game controller. For
-  games that move with a controller but not a keyboard (Among Us, for example).
-- **Tilt Control**: the arrow keys tilt the "phone". Left and Right roll it, Up and
-  Down pitch it, and it springs back level when you let go. For games you steer by
-  tilting (Temple Run 2 and Asphalt Legends, for example). While it is on, a game
-  controller's left stick tilts the phone too.
-- **Space Bar Taps Center**: the space bar taps the middle of the screen, and holding
-  it holds the tap. For one-button games.
-- **Key-binding profiles**, listed below the modes when an app has one: keys mapped to
-  taps on the screen.
-
-**Game controllers** connected to your Mac (Xbox, PlayStation, and other controllers
-macOS supports) show up in Android apps as game controllers, buttons and sticks
-included. Vibration is not supported yet.
-
-### Going back
-
-Every app window has a back button (**‹**) in its title bar, right next to the red,
-yellow and green window buttons. It is Android's Back button: it goes back one screen,
-closes a menu or dialog, or does whatever the app itself does on Back (a game might open
-its pause menu). **Esc** and **Cmd+[** do the same. On an app's main screen, Back hides
-the app, the way an Android phone sends it to the background; click its icon in the Dock
-to bring it back where you left off.
-
-### Resizing and rotating
-
-App windows are ordinary Mac windows. Drag any edge or corner to resize one, tile it
-with macOS window tiling, or click the green button for full screen, and the app
-re-lays itself out for the new size, the way an Android app does when a tablet or a
-foldable changes shape. Most apps keep their proportions while you drag. **View →
-Rotate** (**⌘R**) turns the window between portrait and landscape at any time. There
-is no need to pick a screen size first: an installed app opens at a size that suits
-your display and the app's own orientation, and you take it from there.
-
-### Dark mode
-
-Apps follow your Mac's appearance, live. Switch macOS between Light and Dark (System
-Settings → Appearance, or Auto) while an app is open and most apps change with it right
-away, just as they do when you flip dark mode on an Android phone. Apps that have their
-own theme setting keep using that. To keep apps in light mode whatever macOS uses, set
-`MACAPK_FOLLOW_SYSTEM_APPEARANCE=0` (see [Advanced: flags and settings](#advanced-flags-and-settings)).
-
-### Copy and paste
-
-Copy and paste work both ways between Android apps and your Mac. In a text field,
-**Cmd+C**, **Cmd+X**, **Cmd+V** and **Cmd+A** do what they do in any Mac app, and text
-an Android app copies lands on the Mac clipboard.
-
-### Your files and photos
-
-Android apps see the standard shared folders a phone has, and on Mac.apk those are
-**your real Mac folders**: an app's Pictures, Movies, Music, Download and Documents
-are your `~/Pictures`, `~/Movies`, `~/Music`, `~/Downloads` and `~/Documents`, shared
-by every app the way a phone's storage is. Each app's private data stays inside the app.
-
-- A **gallery** app asks for Android's photos permission first; after you allow it, it
-  shows the pictures in those folders and your **Photos library** (read-only: an Android
-  app can view your Photos, never change or delete them). macOS also asks, once per
-  app, before it lets an app read your Photos library, Documents or Downloads.
-- A **file manager** needs Android's **All files access**, which Mac.apk asks for the
-  way Android does.
-
-> [!NOTE]
-> Be deliberate about which apps you let in. Android's permission is enforced for an
-> app's Java code, but an app that ships native code can read the shared folders
-> without it; macOS's own prompts still protect Documents, Downloads, Desktop and your
-> Photos library.
-
-### Location
-
-Apps that use your location get the Mac's, from macOS Location Services. The first
-time an app asks, Mac.apk asks you whether that app may use your location, the way
-Android does, and macOS asks once whether **Mac.apk Location** may use Location
-Services. You can change the
-macOS side any time in System Settings → Privacy & Security → Location Services.
-
-### Installs from inside an app ask for Touch ID
-
-When F-Droid or Aurora Store installs or removes something, macOS asks you to
-authenticate first with Touch ID or your password. That is deliberate and cannot be
-turned off. An Android app running on your Mac should never be able to install or
-delete software without you personally approving it, so the approval is enforced
-outside the Android app entirely. Expect the prompt; it is not a bug.
-
-**A note on what stores can and cannot do:** you can browse, download, install,
-update and uninstall. An app a store updates keeps its data, and a store can open the app
-it just installed. You cannot make purchases. See
-[For developers and publishers](#for-developers-and-publishers) below for why that
-is deliberate.
-
-### Managing what you have installed
-
-Installing an Android app gives it a real place on your Mac. It gets its own entry
-in your **Applications** folder, under its own name and with its own icon, so
-"Crossy Road" is a Mac app called Crossy Road, launchable from the Dock, Spotlight
-or Launchpad, and pinnable like anything else. You do not have to open Mac.apk
-first, and you do not go through a launcher every time.
-
-**An Android app's saved data lives inside its own `.app`**, the same way the app
-itself does. That keeps everything self-contained: one app, one bundle, nothing
-scattered around your home folder. It has one consequence worth knowing.
+| **macOS 26.4 (Tahoe) or newer** | Required. macOS 27 works from v1.0.1702 |
+| **Apple Silicon** | M1, M2, M3, M4 or newer. Intel Macs are not supported |
+| **Disk** | ~280 MB for Mac.apk. Each installed app takes roughly 1.5 to 3 times its APK size |
+
+## Quick start
+
+1. Download the disk image from the [Releases page](../../releases/latest) and drag
+   **Mac.apk** into **Applications**. It is signed and notarized by Apple, so it opens
+   normally.
+2. Open Mac.apk and click **Install** next to **Runtime:** in the top left.
+3. Open **Settings** (the gear), find **File types**, click **Make Default**, and
+   approve the macOS prompt.
+4. Double-click any `.apk` (or `.apkm`, `.xapk`, `.apks`, `.apkx`), or drag it onto
+   the Mac.apk window.
+
+**The first launch of any app is slow** (up to a minute for a large one) while
+Mac.apk prepares it. Later launches are fast. Full details, updating, and the app
+stores are in the [Installation](https://github.com/kksimp/Mac.apk-Releases/wiki/Installation) and
+[Installing apps](https://github.com/kksimp/Mac.apk-Releases/wiki/Installing-Apps) pages.
 
 > [!WARNING]
-> Dragging an Android app to the Trash takes its saved data with it. Uninstall from
-> the Mac.apk control panel instead.
+> An Android app's saved data lives inside its own `.app`. Dragging the app to the
+> Trash deletes its saves; uninstall from the Mac.apk control panel instead.
+> [More →](https://github.com/kksimp/Mac.apk-Releases/wiki/Managing-Apps)
 
-Because the saves live inside the bundle, moving the app to the Trash yourself
-destroys them, and nothing warns you, because as far as macOS is concerned you just
-deleted an app.
+## Known issues in v1.0.1732
 
-Uninstalling from the Mac.apk control panel does the right thing instead. It shows you
-how much saved data there is, sets that data aside before removing the app, and
-reinstalling the same version puts it back where it was. If you would rather the data
-were destroyed too, there is a checkbox for that in the confirmation.
-
-One detail: kept data is matched **per version**. Reinstalling the exact version you
-removed restores your saves; installing a different version starts fresh and leaves
-the old data waiting for its own version.
-
-The Mac.apk control panel is the place to see everything you have installed and to
-remove things, and it names exactly what is about to go before it does anything.
-
----
-
-## Compatibility
-
-Mac.apk is in alpha, and honesty serves you better than a marketing number here.
-
-**Per-app results:** [COMPATIBILITY.md](COMPATIBILITY.md) lists every app tested by hand (64 so far), with
-its engine, whether it renders, plays and has sound, and what is still wrong.
-
-- **Many apps run well.** Utilities, readers, tools, open-source apps and a good
-  number of games run properly, including apps with substantial native code.
-- **Some apps run partially.** They start and are usable, but something is wrong:
-  a visual glitch, a feature that does not respond, audio that does not play.
-- **Some apps do not run yet.** Usually something specific is missing, and usually
-  it gets fixed.
-- **Google Play Services: partly.** Mac.apk ships its own implementation of the
-  pieces most apps use, and it answers honestly, as a Mac.apk device. Signing in
-  with a Google account works (see above), so apps bought on Google Play can check
-  their licence. Apps can register for push notifications and get real tokens;
-  delivery of pushes from Google's servers is implemented but is the one part not
-  yet verified end to end, so treat notifications as unproven. What will not work:
-  Play Billing (nothing can be bought, see below), Play Integrity (a hardware-attested
-  verdict Mac.apk cannot honestly give), and apps that insist on Google's own signed
-  Play Services package. Mac.apk is not a Google-certified Android device and does
-  not claim to be.
-
-Known problems in specific apps in this release are listed under
-[Known issues in v1.0.1732](#known-issues-in-v101732).
-
-The compatible set grows with every release. If an app you care about does not work,
-tell us. That is genuinely how the list gets shorter.
-
----
-
-## Advanced: flags and settings
-
-Most people never need any of this. Every app installs and runs with the defaults, and
-the Mac.apk window's Settings cover the everyday choices (file types, logs). But the runtime also reads a set of environment variables and command-line
-flags, and a few of them are worth knowing when something needs adjusting or when you
-are gathering a bug report.
-
-**Where to set them**
-
-- **In the Mac.apk window.** Settings has a **Default environment** editor whose
-  key=value lines apply to every app you launch from the window, and each app's
-  **Get Info** sheet has its own editor for that one app (it wins over the default).
-  These apply to launches started from the Mac.apk window. The Default environment
-  editor sits in Settings' developer section, which appears once you have clicked the
-  **Mac.apk** title at the top of the window five times in quick succession; the same
-  section holds the developer toggles named below.
-- **From Terminal, for an installed app.** Pass the variable on the `open` command,
-  which hands it to the app's own process:
-
-  ```
-  open --env MACAPK_FOLLOW_SYSTEM_APPEARANCE=0 -a "/Applications/Crossy Road.app"
-  ```
-
-  Or run the app's executable directly with the variable in front of it:
-  `MACAPK_FOLLOW_SYSTEM_APPEARANCE=0 "/Applications/Crossy Road.app/Contents/MacOS/Crossy Road"`.
-
-**The ones worth knowing**
-
-| Flag | What it does |
-|---|---|
-| `MACAPK_FOLLOW_SYSTEM_APPEARANCE=0` | Forces light mode regardless of the Mac's appearance. Unset (the default) follows macOS's light/dark setting. |
-| `MACAPK_LOG_LEVEL=<2-7>` | The lowest severity the app's log keeps: 2 verbose, 3 debug, 4 info, 5 warnings, 6 errors; anything below it is dropped. Unset keeps everything, which is what a bug report wants (launches from the Mac.apk window use 4 unless verbose logging is on). A higher number makes the log quieter; `7` leaves it almost empty. |
-| `MACAPK_FULLSCREEN=1` (or `--fullscreen`) | Runs the app in a fullscreen window instead of a titled one. |
-| `--orientation auto\|portrait\|landscape` | Window orientation. `auto` reads the app's own declared orientation and otherwise picks portrait. Also a picker in Settings' developer section. |
-| `--width N --height N` | An explicit window size in pixels instead of the orientation's default. Also a picker in Settings' developer section. |
-| `MACAPK_ANDROID_ROOT=<dir>` (or `--android-root`) | Where the runtime keeps the Android filesystem it presents to the app. An installed app always uses the folder inside its own bundle; this matters only when running an APK directly. |
-| `MACAPK_FORCE_ABI=armeabi-v7a` (or `--force-abi`) | Runs the app's 32-bit ARM native code (through the recompiler) even when it ships 64-bit code. For diagnosis; also the "Force ARM32" toggle in the Mac.apk window's developer menu. |
-| `MACAPK_DEV_TRACE=1` (or `--dev-trace`) | Turns on the broad diagnostic trace. Expect about one frame per second in a big game while it is on. Also the "Verbose trace" toggle in the developer menu. |
-| `MACAPK_INSTALL_NOUI=1` | Skips the install confirmation dialog, for scripted installs: `open --env MACAPK_INSTALL_NOUI=1 -a /Applications/Mac.apk.app <apk>`. |
-| `MACAPK_EXTRACT_ASSETS=1` | Restores the older behaviour of copying an app's assets out onto disk instead of reading them from the installed APK in place. Only worth trying if an app that used to work stops finding its own files. |
-| `MACAPK_ALLOW_UNSAFE_X18=1` | Lets an app with 64-bit native code load even when the macOS 26.4 check for it fails. Diagnosis only; it does not make an unsupported macOS work. |
-
-The runtime has over a thousand more, nearly all of them diagnostic switches and bisect
-gates for developers. Every one of them, with its default, its accepted values and
-what it does, is listed in [FLAGS.md](FLAGS.md).
-
----
-
-## For developers and publishers
-
-Mac.apk runs your Android app on macOS, but two things that work on Android do not
-work here: advertising SDKs and in-app purchases. This is by design, not an oversight,
-and we want to explain why.
-
-Ad networks require apps to be distributed through approved channels and to run on attested
-Android devices. Their terms of service prohibit ad serving in modified runtimes, and
-their fraud-detection systems are aggressive about flagging traffic that doesn't match
-a real Android device fingerprint. Attempting to serve real ads through Mac.apk would
-risk getting your AdMob account terminated for facilitating fraud, which would harm
-you, not help you. So Mac.apk itself serves, counts and fakes no ads: no impression,
-click, or paid event is ever fabricated. Mac.apk's own stand-in for Google's ad SDK,
-used when an app does not ship that SDK itself, answers every ad request with
-**no fill**, exactly as a real device with no reachable ad configuration does. An ad
-SDK that an app ships inside its own code runs as part of that app, though, so some
-free games do show their full-screen ads on Mac.apk (see
-[Known issues in v1.0.1732](#known-issues-in-v101732)). Apps keep running either way.
-
-In-app purchases are blocked for the same structural reasons. Google Play Billing
-requires a connection to Google Play Services and an attested device, neither of which
-Mac.apk provides. We stub the billing SDK so apps don't crash on init, but purchase
-flows will fail gracefully rather than complete. Users cannot buy anything through
-Mac.apk, and you receive no revenue from Mac.apk users through the standard Android
-monetization paths.
-
-We recognize this means Mac.apk users currently play your game for free. We don't want
-this to be the long-term answer. If your app is running on Mac.apk and you'd like to be
-compensated for it, we're genuinely interested in working out a partnership. Possible
-structures include:
-
-- A licensed Mac distribution where users purchase a one-time unlock through a payment
-  flow you control, with you keeping the majority of revenue
-- A subscription or storefront model where Mac.apk acts as a sanctioned distribution
-  channel for your catalog on Mac
-- A revenue share on a developer-specific in-app currency or premium content unlock
-- Whatever structure makes sense for your business. We're flexible.
-
-We'd rather build a small number of real publisher relationships than run an unlicensed
-pile of your games. If you publish an Android app that runs on Mac.apk, please reach out
-to Kaleb@voltare.us. Even if a partnership doesn't materialize, we want to know which
-developers are paying attention.
-
-If you'd prefer your app not run on Mac.apk, also reach out and we'll add it to a
-runtime block list. We'd rather honor that request than fight about it.
-
----
+See [Known issues](https://github.com/kksimp/Mac.apk-Releases/wiki/Known-Issues) for this release, and the
+[compatibility list](COMPATIBILITY.md) for every app tested by hand.
 
 ## Reporting problems
 
-Bug reports are useful to us, and the alpha is the point at which they matter most.
+Send the Mac.apk version, your macOS version, the app and where you got it, what
+happened, and the app's log from `~/Library/Logs/macapk/` to Kaleb@voltare.us or
+[open an issue](../../issues/new). Look the log over before posting it publicly.
+[What to include →](https://github.com/kksimp/Mac.apk-Releases/wiki/Reporting-Problems)
 
-A good report includes:
+## Developers and publishers
 
-- **The Mac.apk version.** Mac.apk → About Mac.apk. (Or select Mac.apk in
-  Applications and press ⌘I.)
-- **Your macOS version.** Apple menu, then About This Mac. Or run
-  `sw_vers -productVersion` in Terminal.
-- **Which app**, including where you got it and its version.
-- **What happened**, and what you expected instead. A screenshot is worth a lot.
-- **The app's log**, which is the single most useful attachment. Logs live in
-  `~/Library/Logs/macapk/`, one per app, named
-  `app_<package>_<version>.log`. In Finder, press ⇧⌘G and paste that path.
-  Since v1.0.1666 the log does not record what you type: key presses and text-box
-  contents are redacted, password fields always. It does still record where you click
-  or tap (a capped number of touches per run) and the text of an app's pop-up "toast"
-  messages, so look it over before you post it anywhere public.
-
-Send it to Kaleb@voltare.us or [open an issue](../../issues/new).
+Mac.apk serves no ads and supports no in-app purchases, by design. If you publish an
+app that runs on Mac.apk and want to talk about a partnership, or would rather it
+not run here, email Kaleb@voltare.us. [Details →](https://github.com/kksimp/Mac.apk-Releases/wiki/For-Developers-and-Publishers)
 
 ## License
 
@@ -564,5 +125,6 @@ build recipe) is attached to that release on the
 ## Links
 
 - **Project page:** https://projects.voltare.us/macapk
+- **Wiki:** https://github.com/kksimp/Mac.apk-Releases/wiki
 - **Commercial licensing:** Kaleb@voltare.us
 - **Bug reports:** Kaleb@voltare.us or [open an issue](../../issues/new)
