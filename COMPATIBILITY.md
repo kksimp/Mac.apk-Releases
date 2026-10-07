@@ -56,7 +56,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-06.
 | **Organic Maps** | 2026.07.23-6-FDroid | ✅ | ✅ | Needs location permissions fixed |
 | **Pekka Kana 2** | 1.4.5 | ✅ | ✅ |  |
 | **PianOli** | 1.27 | ✅ | ✅ | Settings don't open |
-| **Plague Inc.** | 1.24.4 | ⚠️ | ⚠️ | INSANE VOLUME, be WARNED. News doesn't work |
+| **Plague Inc.** | 1.24.4 | ⚠️ | ✅ | 10-06: volume fixed in v1.0.1735. A gray bar covers the in-game news preview. |
 | **Puzzles** | 2025-09-12-1919-23762278-fdroid | ✅ | ❔ |  |
 | **Reddit** | 2026.21.0 | ⚠️ | ✅ | Cannot log in via Google. Needs zoomed out when in full screen. Scrolling is odd. |
 | **Rocket League Sideswipe** | 1.12.5 | ✅ | ✅ | Works with a game controller. Sign in with Epic Games and online matches work. The ball shows as a pink shape. |
