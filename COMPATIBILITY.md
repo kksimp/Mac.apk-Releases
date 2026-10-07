@@ -2,7 +2,7 @@
 
 Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-06.
 
-**65 apps tested:** ✅ 51 work · ⚠️ 11 partly work · ❌ 3 don't work yet
+**65 apps tested:** ✅ 52 work · ⚠️ 10 partly work · ❌ 3 don't work yet
 
 **Legend:** ✅ yes · ⚠️ partly · ❌ not yet · ❔ not tested yet. **Works** means you can use the app or play the game; **Sound** means its audio plays. An app tested at more than one version has a row for each, newest first.
 
@@ -56,7 +56,7 @@ Which Android apps run on Mac.apk, tested by hand on a Mac. Updated 2026-10-06.
 | **Organic Maps** | 2026.07.23-6-FDroid | ✅ | ✅ | Needs location permissions fixed |
 | **Pekka Kana 2** | 1.4.5 | ✅ | ✅ |  |
 | **PianOli** | 1.27 | ✅ | ✅ | Settings don't open |
-| **Plague Inc.** | 1.24.4 | ⚠️ | ✅ | Sound: the very loud music is fixed in the next Mac.apk update (after 1.0.1732); 1.0.1732 and earlier still play it far too loud. A gray bar covers the in-game news preview. |
+| **Plague Inc.** | 1.24.4 | ✅ | ✅ | 10-06: the very loud music and the gray bar over the in-game news ticker are fixed in the next Mac.apk update (after 1.0.1732); 1.0.1732 and earlier still have both. |
 | **Puzzles** | 2025-09-12-1919-23762278-fdroid | ✅ | ❔ |  |
 | **Reddit** | 2026.21.0 | ⚠️ | ✅ | Cannot log in via Google. Needs zoomed out when in full screen. Scrolling is odd. |
 | **Rocket League Sideswipe** | 1.12.5 | ✅ | ✅ | Works with a game controller. Sign in with Epic Games and online matches work. The ball shows as a pink shape. |

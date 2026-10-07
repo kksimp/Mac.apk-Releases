@@ -8,7 +8,7 @@
 
 ### 📱 [Which apps work? See the compatibility list →](COMPATIBILITY.md)
 
-[![Apps tested: 65](https://img.shields.io/badge/apps%20tested-65-6c5ce7)](COMPATIBILITY.md) [![Fully playable: 51](https://img.shields.io/badge/fully%20playable-51-2ea44f)](COMPATIBILITY.md) [![Partly works: 11](https://img.shields.io/badge/partly%20works-11-dfb317)](COMPATIBILITY.md) [![Not yet: 3](https://img.shields.io/badge/not%20yet-3-e05d44)](COMPATIBILITY.md)
+[![Apps tested: 65](https://img.shields.io/badge/apps%20tested-65-6c5ce7)](COMPATIBILITY.md) [![Fully playable: 52](https://img.shields.io/badge/fully%20playable-52-2ea44f)](COMPATIBILITY.md) [![Partly works: 10](https://img.shields.io/badge/partly%20works-10-dfb317)](COMPATIBILITY.md) [![Not yet: 3](https://img.shields.io/badge/not%20yet-3-e05d44)](COMPATIBILITY.md)
 
 ---
 
